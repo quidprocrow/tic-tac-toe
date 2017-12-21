@@ -1,7 +1,7 @@
 'use strict'
 const getFormFields = require('../../../lib/get-form-fields.js')
 
-const signIn = function (event) {
+const signUp = function (event) {
   event.preventDefault()
   let data = event.target
   console.log(data)
@@ -9,11 +9,11 @@ const signIn = function (event) {
   console.log(data.credentials)
 }
 
-// Add click events for the sign-in section form.
-const addSignInHandlers = function () {
-  $('#sign-in-form').on('submit', signIn)
+// Add click events for the sign up section form; prevents refresh.
+const addSignUpHandlers = function () {
+  $('#sign-up-form').on('submit', signUp)
 }
 
 module.exports = {
-  addSignInHandlers
+  addSignUpHandlers
 }
