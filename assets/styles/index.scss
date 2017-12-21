@@ -1,6 +1,8 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+$border-color: #000;
+
 .board {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 50px;
@@ -16,6 +18,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 }
 
 .board-box {
+  border: 1px solid $border-color;
   float: left;
   min-height: 200px;
   min-width: 200px;
