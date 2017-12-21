@@ -74,7 +74,7 @@ const boardMove = function (boxId) {
       // console.log('o')
       // Check to see if the player won.
       if (win.winEvent(boardArray) === true) {
-        const winHtml = (`<B>X won!</B>`)
+        const winHtml = (`<B>O won!</B>`)
         $('#user-msg').html(winHtml)
       } else {
         // Clear any errors from the display.
