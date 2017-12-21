@@ -14,6 +14,25 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
+      <section id="intro">
+        <h1>TIC TAC TOE</h1>
+        <button class="big-button" id="sign-in-button">SIGN IN</button>
+        <button class="big-button" id="sign-up-button">SIGN UP</button>
+      </section>
+      <section id="sign-in">
+        <form id="sign-in-form">
+          <h1>SIGN IN</h1>
+          <div class="center">
+            <input type="text" name="credentials[email]" placeholder="EMAIL" class="input-field">
+          </div>
+          <div class="center">
+          <input type="password" name= "credentials[password]" placeholder="PASSWORD" class="input-field">
+          </div>
+          <button class="little-button">SIGN IN</button>
+        </form>
+      </section>
+      <section id="sign-up">
+      </section>
       <section id="game-board" class="board">
           <div class="board-row">
             <div class="board-box" id="0" data-cell-index="0">
