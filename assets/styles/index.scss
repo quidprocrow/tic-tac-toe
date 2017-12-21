@@ -22,3 +22,11 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   text-align: center;
   vertical-align: middle;
 }
+
+.message {
+  background: transparent;
+  height: 40px;
+  margin: 20px auto 0;
+  padding: 20px;
+  width: 560px;
+}
