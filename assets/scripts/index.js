@@ -4,6 +4,14 @@ const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 
 let turnCounter = 1
+const boardArray = [ '', '', '', '', '', '', '', '', '' ]
+const getData = function (box) {
+  return $(box).data('cell-index')
+}
+const setMove = function (move, boardArray, index) {
+  boardArray[index] = move
+  console.log(boardArray)
+}
 
 const clickEvent = function () {
   console.log('Clicked', this.id)
@@ -11,18 +19,27 @@ const clickEvent = function () {
   $(boxId).css('background', 'pink')
   console.log('It is the', turnCounter, 'round.')
   boardMove(boxId)
-  turnCounter++
 }
 
 const boardMove = function (boxId) {
   const xHtml = (`<p>X</p>`)
   const oHtml = (`<p>O</p>`)
-  if (turnCounter === 0 || !(turnCounter % 2 === 0)) {
+  let move = ''
+  const boardCell = getData(boxId)
+  console.log('board cell is', boardCell)
+  if (!(turnCounter % 2 === 0)) {
     $(boxId).html(xHtml)
-    console.log('x')
+    move = 'x'
+    console.log(move)
+    setMove(move, boardArray, boardCell)
+    turnCounter++
   } else {
     $(boxId).html(oHtml)
+    move = 'o'
+    console.log(move)
+    setMove(move, boardArray, boardCell)
     console.log('o')
+    turnCounter++
   }
 }
 
