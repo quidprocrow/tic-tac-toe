@@ -102,6 +102,21 @@ const clickEvent = function () {
   // console.log('It is the', turnCounter, 'round.')
   boardMove(boxId)
 }
+
+// Add click events to board.
+const addBoardHandlers = function () {
+  $('#0').on('click', clickEvent)
+  $('#1').on('click', clickEvent)
+  $('#2').on('click', clickEvent)
+  $('#3').on('click', clickEvent)
+  $('#4').on('click', clickEvent)
+  $('#5').on('click', clickEvent)
+  $('#6').on('click', clickEvent)
+  $('#7').on('click', clickEvent)
+  $('#8').on('click', clickEvent)
+}
+
 module.exports = {
-  clickEvent
+  clickEvent,
+  addBoardHandlers
 }
