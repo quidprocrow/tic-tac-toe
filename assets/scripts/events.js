@@ -1,5 +1,7 @@
 'use strict'
 
+const win = require('./win.js')
+
 // TurnCounter used to check for whose move it is (based on even- or uneven-ness)
 // In future work, I would want to make this as a result of a function that checks
 // whether or not the game is reloaded, and if so, would identify the turn
@@ -20,7 +22,7 @@ const getData = function (box) {
 // Makes the board array reflect the move made on the HTML board.
 const setMove = function (move, boardArray, index) {
   boardArray[index] = move
-  console.log(boardArray)
+  // console.log(boardArray)
 }
 
 // Clear any errors from the page's display.
@@ -51,8 +53,16 @@ const boardMove = function (boxId) {
       // console.log(move)
       // Put an 'x' in the appropriate spot on the array.
       setMove(move, boardArray, boardCell)
-      // Increase the turn.
-      turnCounter++
+      // Check to see if the player won.
+      if (win.winEvent(boardArray) === true) {
+        const winHtml = (`<B>X won!</B>`)
+        $('#user-msg').html(winHtml)
+      } else {
+        // Clear any errors from the display.
+        msgClear()
+        // Increase the turn.
+        turnCounter++
+      }
     } else {
       // If the number of turns is even...
       // Put an 'o' on the board.
@@ -62,11 +72,17 @@ const boardMove = function (boxId) {
       // Put an 'o' in the appropriate spot on the array.
       setMove(move, boardArray, boardCell)
       // console.log('o')
-      // Increase the turn.
-      turnCounter++
+      // Check to see if the player won.
+      if (win.winEvent(boardArray) === true) {
+        const winHtml = (`<B>X won!</B>`)
+        $('#user-msg').html(winHtml)
+      } else {
+        // Clear any errors from the display.
+        msgClear()
+        // Increase the turn.
+        turnCounter++
+      }
     }
-    // Clear any errors from the display.
-    msgClear()
   } else {
     // Display error to user that an invalid move has been made.
     // Importantly: does not update turn, nor the board array.
