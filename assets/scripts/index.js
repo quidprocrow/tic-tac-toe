@@ -16,7 +16,6 @@ const setMove = function (move, boardArray, index) {
 const clickEvent = function () {
   console.log('Clicked', this.id)
   const boxId = '#' + this.id
-  $(boxId).css('background', 'pink')
   console.log('It is the', turnCounter, 'round.')
   boardMove(boxId)
 }
@@ -26,20 +25,26 @@ const boardMove = function (boxId) {
   const oHtml = (`<p>O</p>`)
   let move = ''
   const boardCell = getData(boxId)
-  console.log('board cell is', boardCell)
-  if (!(turnCounter % 2 === 0)) {
-    $(boxId).html(xHtml)
-    move = 'x'
-    console.log(move)
-    setMove(move, boardArray, boardCell)
-    turnCounter++
+  console.log(boardArray)
+  console.log(boardCell)
+  if (boardArray[boardCell] === '') {
+    console.log('board cell is', boardCell)
+    if (!(turnCounter % 2 === 0)) {
+      $(boxId).html(xHtml)
+      move = 'x'
+      console.log(move)
+      setMove(move, boardArray, boardCell)
+      turnCounter++
+    } else {
+      $(boxId).html(oHtml)
+      move = 'o'
+      console.log(move)
+      setMove(move, boardArray, boardCell)
+      console.log('o')
+      turnCounter++
+    }
   } else {
-    $(boxId).html(oHtml)
-    move = 'o'
-    console.log(move)
-    setMove(move, boardArray, boardCell)
-    console.log('o')
-    turnCounter++
+    console.log('Cell has been chosen!')
   }
 }
 
