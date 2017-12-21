@@ -1,6 +1,12 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+.board {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 50px;
+  margin: 50px auto;
+  width: 600px;
+}
 
 .board-row {
   border: 0;
@@ -13,11 +19,6 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   float: left;
   min-height: 200px;
   min-width: 200px;
-}
-
-#game-board {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 50px;
-  margin: 50px auto;
-  width: 600px;
+  text-align: center;
+  vertical-align: middle;
 }
