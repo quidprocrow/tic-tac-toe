@@ -38,6 +38,8 @@ const boardMove = function (boxId) {
   // console.log(boardArray)
   // console.log(boardCell)
   //
+  // When API gets involved: first check that game is not over.
+  //
   // First, check to see if the array has been filled at the same index as the
   // data-cell-index of the div that was clicked. If not, proceed. Otherwise,
   // alert the user.
@@ -57,6 +59,7 @@ const boardMove = function (boxId) {
       if (win.winEvent(boardArray) === true) {
         const winHtml = (`<B>X won!</B>`)
         $('#user-msg').html(winHtml)
+        // When API is involved: mark game as over.
       } else {
         // Clear any errors from the display.
         msgClear()
@@ -76,6 +79,7 @@ const boardMove = function (boxId) {
       if (win.winEvent(boardArray) === true) {
         const winHtml = (`<B>O won!</B>`)
         $('#user-msg').html(winHtml)
+        // When API is involved: mark game as over.
       } else {
         // Clear any errors from the display.
         msgClear()

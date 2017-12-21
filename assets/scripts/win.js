@@ -4,6 +4,8 @@
 const winEvent = function (boardArray) {
   const players = ['x', 'o']
   let win = false
+  // Loops checks first to see if X has a winning combination of moves;
+  // then o.
   for (let i = 0; i < players.length; i++) {
     // Horizontal win: first row.
     if (boardArray[0] === players[i] &&
@@ -53,6 +55,7 @@ const winEvent = function (boardArray) {
       boardArray[6] === players[i]) {
       win = true
     }
+    // Win is fale, unless one of the other conditions obtain.
   }
   return win
 }
