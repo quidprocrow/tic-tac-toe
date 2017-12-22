@@ -49,9 +49,31 @@ const changePassFailure = function (data) {
   $('#password-notification').html(errorHtml).attr('class', 'center')
 }
 
+// Successfully begins a game.
+const beginGameSuccess = function (data) {
+  store.game = data.game
+  // console.log('I am game data', data.game)
+  // console.log('I am stored game data', store.game)
+  $('#profile').hide()
+  $('#game-board').show()
+}
+
+// Fails to begin a game.
+const beginGameFailure = function () {
+  const errorHtml = (`<p>
+    <b>Oops!</b> There's been an error!
+    </p>
+    <p>Contact the
+    <a href="mailto:windmillwarrior@gmail.com">administrator</a>.</p>
+    `)
+  $('#profile').append(errorHtml)
+}
+
 module.exports = {
   signOutFailure,
   signOutSuccess,
   changePassSuccess,
-  changePassFailure
+  changePassFailure,
+  beginGameFailure,
+  beginGameSuccess
 }

@@ -1,6 +1,9 @@
 'use strict'
 
 const win = require('./win.js')
+const store = require('../store.js')
+const api = require('./api.js')
+const ui = require('./ui.js')
 
 // TurnCounter used to check for whose move it is (based on even- or uneven-ness)
 // In future work, I would want to make this as a result of a function that checks
@@ -10,40 +13,68 @@ const win = require('./win.js')
 
 let turnCounter = 1
 
-// This will be replaced with actual information by the game cell array.
-
-const boardArray = [ '', '', '', '', '', '', '', '', '' ]
-
 // Grabs the 'cell index' information from the div's html to return it.
 const getData = function (box) {
   return $(box).data('cell-index')
 }
 
 // Makes the board array reflect the move made on the HTML board.
-const setMove = function (move, boardArray, index) {
-  boardArray[index] = move
-  // console.log(boardArray)
+const setMove = function (move, index) {
+  console.log('I am the store before the update', store.game.cells)
+  const arrayUpdate = {
+    game: {
+      cell: {
+        index: index,
+        value: move
+      },
+      over: false
+    }
+  }
+  const cellUpdate = JSON.stringify(arrayUpdate)
+  // cellUpdate = "'" + cellUpdate + "'"
+  // console.log('I am the json string during the update', cellUpdate)
+  // console.log('I am the store during the update', store)
+  api.updateGame(cellUpdate)
+    .then(ui.updateGameSuccess)
+    .catch(ui.updateGameFailure)
+  // console.log('And now I am the store', store.game.cells)
 }
 
-// Clear any errors from the page's display.
-const msgClear = function () {
-  $('#user-msg').html('')
+// Makes the board array reflect the move made on the HTML board.
+const markGameOver = function (move, index) {
+  const arrayUpdate = {
+    game: {
+      cell: {
+        index: index,
+        value: move
+      },
+      over: true
+    }
+  }
+  const cellUpdate = JSON.stringify(arrayUpdate)
+  api.updateGame(cellUpdate)
+    .then(ui.updateGameSuccess)
+    .catch(ui.updateGameFailure)
 }
+
+// // Clear any errors from the page's display.
+// const msgClear = function () {
+//   $('#user-msg').html('')
+// }
 
 // Places the move on the HTML board and the array.
 const boardMove = function (boxId) {
   const xHtml = (`<p>X</p>`)
   const oHtml = (`<p>O</p>`)
   const boardCell = getData(boxId)
-  // console.log(boardArray)
-  // console.log(boardCell)
-  //
-  // When API gets involved: first check that game is not over.
-  //
+  // console.log('I am board cell', boardCell)
+  // console.log('I am store.game.cells', store.game.cells)
+  // console.log('I am store game cells', store.game.cells)
+  // console.log('I am store.game.cells at the index' + store.game.cells[boardCell])
   // First, check to see if the array has been filled at the same index as the
   // data-cell-index of the div that was clicked. If not, proceed. Otherwise,
   // alert the user.
-  if (boardArray[boardCell] === '') {
+  if (store.game.cells[boardCell] === '') {
     // console.log('board cell is', boardCell)
     //
     // Check to see what turn it is.
@@ -54,18 +85,18 @@ const boardMove = function (boxId) {
       const move = 'x'
       // console.log(move)
       // Put an 'x' in the appropriate spot on the array.
-      setMove(move, boardArray, boardCell)
+      setMove(move, boardCell)
       // Check to see if the player won.
-      if (win.winEvent(boardArray) === true) {
-        const winHtml = (`<B>X won!</B>`)
-        $('#user-msg').html(winHtml)
-        // When API is involved: mark game as over.
-      } else {
-        // Clear any errors from the display.
-        msgClear()
-        // Increase the turn.
-        turnCounter++
-      }
+      // if (win.winEvent(store.game.cells) === true) {
+      //   markGameOver(move, boardCell)
+      //   const winHtml = (`<B>X won!</B>`)
+      //   $('#user-msg').html(winHtml)
+      // } else {
+      //   // Clear any errors from the display.
+      //   msgClear()
+      //   // Increase the turn.
+      //   turnCounter++
+      // }
     } else {
       // If the number of turns is even...
       // Put an 'o' on the board.
@@ -73,16 +104,16 @@ const boardMove = function (boxId) {
       const move = 'o'
       // console.log(move)
       // Put an 'o' in the appropriate spot on the array.
-      setMove(move, boardArray, boardCell)
+      setMove(move, boardCell)
       // console.log('o')
       // Check to see if the player won.
-      if (win.winEvent(boardArray) === true) {
+      if (win.winEvent(store.game.cells) === true) {
+        markGameOver(move, boardCell)
         const winHtml = (`<B>O won!</B>`)
         $('#user-msg').html(winHtml)
-        // When API is involved: mark game as over.
       } else {
         // Clear any errors from the display.
-        msgClear()
+        // msgClear()
         // Increase the turn.
         turnCounter++
       }
@@ -96,11 +127,20 @@ const boardMove = function (boxId) {
 }
 
 // This is the event that runs whenever a user clicks a board cell.
+// Logs the space clicked, then checkes that the stored game is not over.
 const clickEvent = function () {
+  // console.log('I am this id', this.id)
+  // console.log('I am the store', store)
   // console.log('Clicked', this.id)
   const boxId = '#' + this.id
   // console.log('It is the', turnCounter, 'round.')
-  boardMove(boxId)
+  console.log('I am boxId', boxId)
+  if (store.game.over !== 'true') {
+    boardMove(boxId)
+  } else {
+    const invalidMoveHtml = (`<B>Games over, brah.</B>`)
+    $('#user-msg').html(invalidMoveHtml)
+  }
 }
 
 // Add click events to board.
