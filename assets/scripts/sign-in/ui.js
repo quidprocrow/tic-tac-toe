@@ -9,13 +9,12 @@ const signInSuccess = function (data) {
   store.user = data.signInUser
 }
 
-const redirect = function () {
-  $('#sign-in').hide()
-  $('#sign-up').show()
-}
-
 // Display the fact of an error to the user.
 const signInFailure = function (data) {
+  const redirect = function () {
+    $('#sign-in').hide()
+    $('#sign-up').show()
+  }
   const errorHtml = (`<p>
     <b>Oops!</b> There's been an error!
     </p>
@@ -23,7 +22,7 @@ const signInFailure = function (data) {
     <p>Contact the
     <a href="mailto:windmillwarrior@gmail.com">administrator</a> otherwise.</p>
     `)
-  $('#sign-in-error').html(errorHtml).attr('class', 'sign-error')
+  $('#sign-in-error').html(errorHtml).attr('class', 'sign-notice')
   $('#sign-up-redirect').on('click', redirect)
 }
 

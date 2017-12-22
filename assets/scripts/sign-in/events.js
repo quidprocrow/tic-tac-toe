@@ -3,6 +3,10 @@ const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api')
 const ui = require('./ui')
 
+// User is signed in and redirected to profile page upon success; otherwise,
+// user is notified that there's been an error and notified to contact
+// an admin, or go to sign in page.
+// On success, user information is stored.
 const signIn = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
