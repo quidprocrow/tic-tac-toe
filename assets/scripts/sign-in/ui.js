@@ -9,6 +9,7 @@ const signInSuccess = function (data) {
   store.user = data.user
   const userGreet = store.user.email
   $('#profile-greeting').html('Hi ' + userGreet + ' !').css('text-transform', 'uppercase')
+  $('#sign-in-error').html('')
 }
 
 // Display the fact of an error to the user.
@@ -16,6 +17,7 @@ const signInFailure = function (data) {
   const redirect = function () {
     $('#sign-in').hide()
     $('#sign-up').show()
+    $('#sign-in-error').html('')
   }
   const errorHtml = (`<p>
     <b>Oops!</b> There's been an error!

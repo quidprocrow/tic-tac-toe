@@ -30,7 +30,6 @@ const changePassSuccess = function () {
     $('#change-pass').hide()
     $('#profile').show()
   }
-  // console.log('success')
   const successHtml = (`<p>
     <b>Excellent!</b> Back to <a id="pass-profile-redirect">your profile</a>, then?</p>
     `)

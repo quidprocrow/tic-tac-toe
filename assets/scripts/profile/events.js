@@ -26,10 +26,10 @@ const changePasswordRedirect = function () {
 const changePassword = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  $('#change-password-form').find('input[type=password], textarea').val('')
   api.changePasswordUser(data)
     .then(ui.changePassSuccess)
     .catch(ui.changePassFailure)
+  $('#change-password-form').find('input[type=password], textarea').val('')
 }
 
 // Add click events for the sign-out button.

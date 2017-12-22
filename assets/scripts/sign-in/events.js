@@ -11,11 +11,11 @@ const ui = require('./ui')
 const signIn = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  $('#sign-in-form').find('input[type=text], textarea').val('')
-  $('#sign-in-form').find('input[type=password], textarea').val('')
   api.signInUser(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
+  $('#sign-in-form').find('input[type=text], textarea').val('')
+  $('#sign-in-form').find('input[type=password], textarea').val('')
 }
 
 // Add click events for the sign-in section form.

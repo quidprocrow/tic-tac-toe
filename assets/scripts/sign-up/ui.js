@@ -2,12 +2,15 @@
 
 const store = require('../store')
 
+// Voluntary redirect, used in both success or failure.
+const redirect = function () {
+  $('#sign-up').hide()
+  $('#sign-in').show()
+  $('#sign-up-notification').html('')
+}
+
 // Hide the previous section, show the profile, and store user information.
 const signUpSuccess = function (data) {
-  const redirect = function () {
-    $('#sign-up').hide()
-    $('#sign-in').show()
-  }
   store.user = data.user
   console.log(data)
   const successHtml = (`<p>Success, <b>${store.user.email}</b>!</p>
@@ -15,11 +18,6 @@ const signUpSuccess = function (data) {
     `)
   $('#sign-up-notification').html(successHtml).attr('class', 'sign-notice')
   $('#sign-in-redirect').on('click', redirect)
-}
-
-const redirect = function () {
-  $('#sign-in').hide()
-  $('#sign-up').show()
 }
 
 // Display the fact of an error to the user.
