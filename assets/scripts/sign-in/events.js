@@ -1,12 +1,14 @@
 'use strict'
 const getFormFields = require('../../../lib/get-form-fields.js')
+const api = require('./api')
+const ui = require('./ui')
 
 const signIn = function (event) {
   event.preventDefault()
-  let data = event.target
-  console.log(data)
-  data = getFormFields(data)
-  console.log(data.credentials)
+  const data = getFormFields(event.target)
+  api.signInUser(data)
+    .then(ui.signInSuccess)
+    .catch(ui.signInFailure)
 }
 
 // Add click events for the sign-in section form.

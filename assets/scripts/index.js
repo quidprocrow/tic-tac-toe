@@ -16,6 +16,7 @@ $(() => {
   signInEvents.addSignInHandlers()
   signUpEvents.addSignUpHandlers()
   boardEvents.addBoardHandlers()
+  $('#profile').hide()
   $('#game-board').hide()
   $('#sign-in').hide()
   $('#sign-up').hide()
