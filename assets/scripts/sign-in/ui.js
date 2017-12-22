@@ -6,7 +6,9 @@ const store = require('../store')
 const signInSuccess = function (data) {
   $('#sign-in').hide()
   $('#profile').show()
-  store.user = data.signInUser
+  store.user = data.user
+  const userGreet = store.user.email
+  $('#profile-greeting').html('Hi ' + userGreet + ' !').css('text-transform', 'uppercase')
 }
 
 // Display the fact of an error to the user.

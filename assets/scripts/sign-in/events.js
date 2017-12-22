@@ -7,9 +7,12 @@ const ui = require('./ui')
 // user is notified that there's been an error and notified to contact
 // an admin, or go to sign in page.
 // On success, user information is stored.
+// Either way, form is cleared.
 const signIn = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
+  $('#sign-in-form').find('input[type=text], textarea').val('')
+  $('#sign-in-form').find('input[type=password], textarea').val('')
   api.signInUser(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)

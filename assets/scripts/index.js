@@ -7,6 +7,14 @@ const introEvents = require('./intro/events.js')
 const signInEvents = require('./sign-in/events.js')
 const signUpEvents = require('./sign-up/events.js')
 
+// FormClear placed in index to make it available to nested forms.
+const formClear = function () {
+  $('#sign-up-form').find('input[type=text], textarea').val('')
+  $('#sign-in-form').find('input[type=text], textarea').val('')
+  $('#sign-up-form').find('input[type=password], textarea').val('')
+  $('#sign-in-form').find('input[type=password], textarea').val('')
+}
+
 // All sections except intro hidden.
 // Intro buttons direct accordingly, showing the appropriate form and hiding the intro.
 // Each individual board div has a click event attached upon load.
@@ -27,3 +35,7 @@ $(() => {
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
+
+module.exports = {
+  formClear
+}

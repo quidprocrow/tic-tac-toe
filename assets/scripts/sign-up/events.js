@@ -10,6 +10,8 @@ const ui = require('./ui')
 const signUp = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
+  $('#sign-up-form').find('input[type=text], textarea').val('')
+  $('#sign-up-form').find('input[type=password], textarea').val('')
   api.signUpUser(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
