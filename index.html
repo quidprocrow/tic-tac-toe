@@ -15,7 +15,7 @@
     </head>
     <body>
       <section id="intro">
-        <h1>TIC TAC TOE</h1>
+        <h1 id="game-title">TIC TAC TOE</h1>
         <button class="big-button" id="sign-in-button">SIGN IN</button>
         <button class="big-button" id="sign-up-button">SIGN UP</button>
       </section>
@@ -50,8 +50,38 @@
           </div>
         </form>
       </section>
-      <section id="profile">
+      <section id="profile" class="profile">
         <h1 id="profile-greeting"></h1>
+        <div class="center">
+          <div class="vs">
+            <h2>PLAY VS.</h2>
+            </div>
+            <div class="vs-row">
+              <button class="little-button" ID="vs-guest-button">GUEST</button>
+              <button class="little-button" ID="vs-play-button">PLAYER</button>
+              <button class="little-button" ID="vs-ai-button">AI</button>
+            </div>
+            <div class="profile-bottom">
+              <button class="little-button" ID="sign-out-button">SIGN OUT</button>
+              <button class="little-button" ID="change-password-button">CHANGE PASSWORD</button>
+              <button class="little-button" ID="personal-statistics-button">PERSONAL STATISTICS</button>
+            </div>
+        </div>
+      </section>
+      <section id="change-pass" class="change-pass">
+        <h1>CHANGE PASS</h1>
+        <form id="change-password-form">
+          <div class="center">
+          <input type="password" name= "passwords[old]" placeholder="OLD PASSWORD" class="input-field">
+          </div>
+          <div class="center">
+          <input type="password" name= "passwords[new]" placeholder="NEW PASSWORD" class="input-field">
+          </div>
+          <button class="little-button" id="change-password-form-button">CONFIRM CHANGE</button>
+        </form>
+        <div id="password-notification">
+        </div>
+
       </section>
       <section id="game-board" class="board">
           <div class="board-row">
