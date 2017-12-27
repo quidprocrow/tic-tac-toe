@@ -10,7 +10,6 @@ const signInSuccess = function (data) {
   const userGreet = store.user.email.split('@')
   // Greet the user.
   $('#profile-greeting').html('Hi ' + userGreet[0] + ' !').css('text-transform', 'uppercase')
-  console.log(userGreet[0].length)
   if (userGreet[0].length > 12) {
     $('#profile-greeting').css('font-size', '50px')
   } else if (userGreet[0].length > 9) {
