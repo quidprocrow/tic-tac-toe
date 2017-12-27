@@ -30,11 +30,8 @@ $white: #fff;
 .message {
   background: transparent;
   font-size: 20px;
-  height: 40px;
-  margin: 20px auto 0;
-  padding: 20px;
+  margin: 0 auto;
   text-align: center;
-  width: 560px;
 }
 
 h1 {
@@ -48,8 +45,6 @@ h2 {
   font-size: 40px;
   text-align: center;
 }
-
-
 
 .big-button {
   background-color: $black;
@@ -91,7 +86,8 @@ h2 {
   width: 150px;
 }
 
-.change-pass .little-button {
+.change-pass
+> .little-button {
   width: 300px;
 }
 
@@ -102,7 +98,8 @@ h2 {
   width: 650px;
 }
 
-.profile-bottom .little-button {
+.profile-bottom
+> .little-button {
   clear: none;
   display: inline-block;
   float: left;

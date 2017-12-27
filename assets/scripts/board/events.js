@@ -1,6 +1,5 @@
 'use strict'
 
-const win = require('./win.js')
 const store = require('../store.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
@@ -38,23 +37,6 @@ const setMove = function (move, index) {
   // console.log('And now I am the store', store.game.cells)
 }
 
-// Makes the board array reflect the move made on the HTML board.
-const markGameOver = function (move, index) {
-  const arrayUpdate = {
-    game: {
-      cell: {
-        index: index,
-        value: move
-      },
-      over: true
-    }
-  }
-  const cellUpdate = JSON.stringify(arrayUpdate)
-  api.updateGame(cellUpdate)
-    .then(ui.updateGameSuccess)
-    .catch(ui.updateGameFailure)
-}
-
 // // Clear any errors from the page's display.
 // const msgClear = function () {
 //   $('#user-msg').html('')
@@ -65,56 +47,32 @@ const boardMove = function (boxId) {
   const xHtml = (`<p>X</p>`)
   const oHtml = (`<p>O</p>`)
   const boardCell = getData(boxId)
-  // console.log('I am board cell', boardCell)
-  // console.log('I am store.game.cells', store.game.cells)
-  // console.log('I am store game cells', store.game.cells)
-  // console.log('I am store.game.cells at the index' + store.game.cells[boardCell])
+  store.currentIndex = boardCell
   // First, check to see if the array has been filled at the same index as the
   // data-cell-index of the div that was clicked. If not, proceed. Otherwise,
   // alert the user.
   if (store.game.cells[boardCell] === '') {
-    // console.log('board cell is', boardCell)
-    //
     // Check to see what turn it is.
     // If uneven, it's X's turn.
     if (!(store.turnCounter % 2 === 0)) {
       // Put an 'x' on the board.
       $(boxId).html(xHtml)
       const move = 'x'
-      // console.log(move)
-      // Put an 'x' in the appropriate spot on the array.
+      // Mark the current player as X, for display purposes.
+      store.currentPlayer = 'X'
+      // Put an 'x' in the appropriate spot on the API array.
       setMove(move, boardCell)
-      // Check to see if the player won.
-      // if (win.winEvent(store.game.cells) === true) {
-      //   markGameOver(move, boardCell)
-      //   const winHtml = (`<B>X won!</B>`)
-      //   $('#user-msg').html(winHtml)
-      // } else {
-      //   // Clear any errors from the display.
-      //   msgClear()
-      //   // Increase the turn.
-      //   turnCounter++
-      // }
     } else {
       // If the number of turns is even...
       // Put an 'o' on the board.
       $(boxId).html(oHtml)
       const move = 'o'
-      // console.log(move)
+      // Mark the current player as X, for display purposes.
+      store.currentPlayer = 'O'
       // Put an 'o' in the appropriate spot on the array.
       setMove(move, boardCell)
-      // console.log('o')
-      // Check to see if the player won.
-      if (win.winEvent(store.game.cells) === true) {
-        markGameOver(move, boardCell)
-        const winHtml = (`<B>O won!</B>`)
-        $('#user-msg').html(winHtml)
-      } else {
-        // Clear any errors from the display.
-        // msgClear()
-        // Increase the turn.
-        // turnCounter++
-      }
+      // This initiates a post request, which, if successful, checks for a
+      // win by the player, and alerts accordingly.
     }
   } else {
     // Display error to user that an invalid move has been made.
@@ -127,17 +85,14 @@ const boardMove = function (boxId) {
 // This is the event that runs whenever a user clicks a board cell.
 // Logs the space clicked, then checkes that the stored game is not over.
 const clickEvent = function () {
-  // console.log('I am this id', this.id)
-  // console.log('I am the store', store)
-  // console.log('Clicked', this.id)
+  // Create a string that can be used for jquery events.
   const boxId = '#' + this.id
-  // console.log('It is the', turnCounter, 'round.')
-  // console.log('I am boxId', boxId)
-  if (store.game.over !== 'true') {
+  // Check that the game is not over, and inform the user if so.
+  if (store.game.over !== true) {
     boardMove(boxId)
   } else {
-    const invalidMoveHtml = (`<B>Games over, brah.</B>`)
-    $('#user-msg').html(invalidMoveHtml)
+    const invalidMoveHtml = (`<B>Game is still over, brah.</B>`)
+    $('#over-msg').html(invalidMoveHtml)
   }
 }
 
