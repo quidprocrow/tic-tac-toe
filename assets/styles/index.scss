@@ -92,7 +92,10 @@ h2 {
 }
 
 .change-pass
-> .little-button,
+> .little-button {
+  width: 300px;
+}
+
 .reset
 > .little-button {
   width: 300px;
