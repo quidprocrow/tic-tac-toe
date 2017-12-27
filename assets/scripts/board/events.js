@@ -89,6 +89,19 @@ const clickEvent = function () {
   }
 }
 
+const resetEvent = function () {
+  // Resets all those parts of the store file dealing with this game specifically.
+  store.game = null
+  store.turnCounter = null
+  store.currentPlayer = null
+  store.currentIndex = null
+  console.log(store)
+  // Hides the button itself and the board; shows the profile.
+  $('#reset-game').hide()
+  $('#game-board').hide()
+  $('#profile').show()
+}
+
 // Add click events to board.
 const addBoardHandlers = function () {
   $('#0').on('click', clickEvent)
@@ -100,7 +113,7 @@ const addBoardHandlers = function () {
   $('#6').on('click', clickEvent)
   $('#7').on('click', clickEvent)
   $('#8').on('click', clickEvent)
-  // $('#reset-game-button').on('click', resetEvent)
+  $('#reset-game-button').on('click', resetEvent)
 }
 
 module.exports = {

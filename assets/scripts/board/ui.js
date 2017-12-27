@@ -8,7 +8,7 @@ const msgClear = function () {
   $('#user-msg').html('')
 }
 
-// Makes the API reflect that the game is over.
+// Makes the API reflect that the game is over, shows reset button.
 const markGameOver = function (move, index) {
   const arrayUpdate = {
     game: {
@@ -64,6 +64,7 @@ const endGameSuccess = function (data) {
   // Tell player the game is over.
   const endMoveHtml = (`<p><B>Game over.</B></p>`)
   $('#user-msg').append(endMoveHtml)
+  $('#reset-game').show()
 }
 
 const endGameFailure = function (data) {
