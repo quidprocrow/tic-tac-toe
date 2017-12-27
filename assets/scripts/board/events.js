@@ -95,11 +95,22 @@ const resetEvent = function () {
   store.turnCounter = null
   store.currentPlayer = null
   store.currentIndex = null
-  console.log(store)
   // Hides the button itself and the board; shows the profile.
   $('#reset-game').hide()
   $('#game-board').hide()
   $('#profile').show()
+  // Clears the board.
+  $('#0').html('')
+  $('#1').html('')
+  $('#2').html('')
+  $('#3').html('')
+  $('#4').html('')
+  $('#5').html('')
+  $('#6').html('')
+  $('#7').html('')
+  $('#8').html('')
+  $('#user-msg').html('')
+  $('#over-msg').html('')
 }
 
 // Add click events to board.
