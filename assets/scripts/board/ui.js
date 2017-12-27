@@ -38,11 +38,18 @@ const updateGameSuccess = function (data) {
     $('#user-msg').html(winHtml)
     // Mark the game over.
     markGameOver(move, index)
-  } else {
+  } else if (store.game.cells.includes('')) {
+    // If there are still blank cells in the board, continue.
     // Clear any errors from the display.
     msgClear()
     // Increase the turn.
     store.turnCounter = store.turnCounter + 1
+  } else {
+    // If there are no blank cells, mark the game over.
+    // Tell the user.
+    const tieHtml = (`<p><B>Tie!</B></p>`)
+    $('#user-msg').html(tieHtml)
+    markGameOver(move, index)
   }
 }
 

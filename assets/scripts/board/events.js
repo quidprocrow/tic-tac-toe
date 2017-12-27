@@ -17,7 +17,6 @@ const getData = function (box) {
 
 // Makes the board array reflect the move made on the HTML board.
 const setMove = function (move, index) {
-  // console.log('I am the store before the update', store.game.cells)
   const arrayUpdate = {
     game: {
       cell: {
@@ -28,19 +27,10 @@ const setMove = function (move, index) {
     }
   }
   const cellUpdate = JSON.stringify(arrayUpdate)
-  // cellUpdate = "'" + cellUpdate + "'"
-  // console.log('I am the json string during the update', cellUpdate)
-  // console.log('I am the store during the update', store)
   api.updateGame(cellUpdate)
     .then(ui.updateGameSuccess)
     .catch(ui.updateGameFailure)
-  // console.log('And now I am the store', store.game.cells)
 }
-
-// // Clear any errors from the page's display.
-// const msgClear = function () {
-//   $('#user-msg').html('')
-// }
 
 // Places the move on the HTML board and the array.
 const boardMove = function (boxId) {

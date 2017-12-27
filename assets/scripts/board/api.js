@@ -16,9 +16,6 @@ const createGame = function (data) {
 
 // Updates a game's moves.
 const updateGame = function (data) {
-  // console.log('I am the data', data)
-  // console.log('I am the store.game.id', store.game.id)
-  // console.log('I am the user token', store.user.token)
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',
