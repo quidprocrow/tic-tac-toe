@@ -54,6 +54,7 @@ const beginGameSuccess = function (data) {
   store.game = data.game
   // console.log('I am game data', data.game)
   // console.log('I am stored game data', store.game)
+  store.turnCounter = 1
   $('#profile').hide()
   $('#game-board').show()
 }

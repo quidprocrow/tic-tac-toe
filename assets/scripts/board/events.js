@@ -11,8 +11,6 @@ const ui = require('./ui.js')
 // by assuming X is the first move and then identifying whose turn it is
 // by whether or not there are more x's than o's on the board.
 
-let turnCounter = 1
-
 // Grabs the 'cell index' information from the div's html to return it.
 const getData = function (box) {
   return $(box).data('cell-index')
@@ -20,7 +18,7 @@ const getData = function (box) {
 
 // Makes the board array reflect the move made on the HTML board.
 const setMove = function (move, index) {
-  console.log('I am the store before the update', store.game.cells)
+  // console.log('I am the store before the update', store.game.cells)
   const arrayUpdate = {
     game: {
       cell: {
@@ -79,7 +77,7 @@ const boardMove = function (boxId) {
     //
     // Check to see what turn it is.
     // If uneven, it's X's turn.
-    if (!(turnCounter % 2 === 0)) {
+    if (!(store.turnCounter % 2 === 0)) {
       // Put an 'x' on the board.
       $(boxId).html(xHtml)
       const move = 'x'
@@ -115,7 +113,7 @@ const boardMove = function (boxId) {
         // Clear any errors from the display.
         // msgClear()
         // Increase the turn.
-        turnCounter++
+        // turnCounter++
       }
     }
   } else {
@@ -134,7 +132,7 @@ const clickEvent = function () {
   // console.log('Clicked', this.id)
   const boxId = '#' + this.id
   // console.log('It is the', turnCounter, 'round.')
-  console.log('I am boxId', boxId)
+  // console.log('I am boxId', boxId)
   if (store.game.over !== 'true') {
     boardMove(boxId)
   } else {

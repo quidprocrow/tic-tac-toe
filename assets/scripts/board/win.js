@@ -1,6 +1,6 @@
 'use strict'
 
-const store = require('../store')
+// const store = require('../store')
 
 // Checks to see if the move won the game.
 const winEvent = function (boardArray) {
@@ -9,9 +9,9 @@ const winEvent = function (boardArray) {
   // Loops checks first to see if X has a winning combination of moves;
   // then o.
   for (let i = 0; i < players.length; i++) {
-    console.log('I am the board at', i, boardArray[i])
-    console.log('I am the players at i', players[i])
-    console.log('I am the store game cells at i', store.game.cells[i])
+    // console.log('I am the board at', i, boardArray[i])
+    // console.log('I am the players at i', players[i])
+    // console.log('I am the store game cells at i', store.game.cells[i])
     // Horizontal win: first row.
     if (boardArray[0] === players[i] &&
       boardArray[1] === players[i] &&
