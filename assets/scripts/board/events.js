@@ -77,10 +77,13 @@ const boardMove = function (boxId) {
 const clickEvent = function () {
   // Create a string that can be used for jquery events.
   const boxId = '#' + this.id
-  // Check that the game is not over, and inform the user if so.
+  // Check that the game is not over.
   if (store.game.over !== true) {
+    // If the game is not over, mark the board accordingly and request a change
+    // to the game's API.
     boardMove(boxId)
   } else {
+    // If the game is over, inform the user.
     const invalidMoveHtml = (`<B>Game is still over, brah.</B>`)
     $('#over-msg').html(invalidMoveHtml)
   }
@@ -97,6 +100,7 @@ const addBoardHandlers = function () {
   $('#6').on('click', clickEvent)
   $('#7').on('click', clickEvent)
   $('#8').on('click', clickEvent)
+  // $('#reset-game-button').on('click', resetEvent)
 }
 
 module.exports = {

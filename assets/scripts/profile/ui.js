@@ -57,6 +57,7 @@ const beginGameSuccess = function (data) {
   store.turnCounter = 1
   $('#profile').hide()
   $('#game-board').show()
+  $('#reset-game').hide()
 }
 
 // Fails to begin a game.

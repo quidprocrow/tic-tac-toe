@@ -19,13 +19,20 @@ $white: #fff;
 }
 
 .board-box {
+  align-items: center;
   border: 1px solid $black;
+  display: flex;
   float: left;
+  justify-content: center;
   min-height: 200px;
   min-width: 200px;
   text-align: center;
-  vertical-align: middle;
 }
+//
+// .board-box
+// > p {
+//
+// }
 
 .message {
   background: transparent;
