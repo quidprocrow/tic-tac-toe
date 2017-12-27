@@ -61,12 +61,13 @@ const updateGameFailure = function (data) {
 const endGameSuccess = function (data) {
 // Make the stored game reflect the updated API game.
   store.game = data.game
-  console.log('I am the stored game', store.game)
+  // Tell player the game is over.
   const endMoveHtml = (`<p><B>Game over.</B></p>`)
   $('#user-msg').append(endMoveHtml)
 }
 
 const endGameFailure = function (data) {
+  // Tell player something went wrong.
   const invalidMoveHtml = (`<B>How bizzare.</B>`)
   $('#user-msg').html(invalidMoveHtml)
 }

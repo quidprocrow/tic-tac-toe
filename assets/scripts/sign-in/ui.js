@@ -7,8 +7,8 @@ const signInSuccess = function (data) {
   $('#sign-in').hide()
   $('#profile').show()
   store.user = data.user
-  const userGreet = store.user.email
-  $('#profile-greeting').html('Hi ' + userGreet + ' !').css('text-transform', 'uppercase')
+  const userGreet = store.user.email.split('@')
+  $('#profile-greeting').html('Hi ' + userGreet[0] + ' !').css('text-transform', 'uppercase')
   $('#sign-in-error').html('')
 }
 
