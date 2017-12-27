@@ -8,8 +8,17 @@ const signInSuccess = function (data) {
   $('#profile').show()
   store.user = data.user
   const userGreet = store.user.email.split('@')
+  // Greet the user.
   $('#profile-greeting').html('Hi ' + userGreet[0] + ' !').css('text-transform', 'uppercase')
-  $('#sign-in-error').html('')
+  console.log(userGreet[0].length)
+  if (userGreet[0].length > 12) {
+    $('#profile-greeting').css('font-size', '50px')
+  } else if (userGreet[0].length > 9) {
+    $('#profile-greeting').css('font-size', '75px')
+  } else {
+    $('#profile-greeting').css('font-size', '120px')
+    $('#sign-in-error').html('')
+  }
 }
 
 // Display the fact of an error to the user.
