@@ -4,6 +4,13 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 $black: #000;
 $white: #fff;
 
+section {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
 .board {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 50px;
@@ -77,6 +84,13 @@ h2 {
   margin: 0 auto;
   text-align: center;
   width: 610px;
+}
+
+.justify {
+  font-size: 25px;
+  margin: 0 auto;
+  text-align: justify;
+  width: 600px;
 }
 
 .little-button {
@@ -198,11 +212,6 @@ p {
 }
 
 @media only screen and (max-width: 650px) {
-  .invisible {
-    display: block;
-    height: 0;
-    width: 0
-  }
   .navbar-collapse {
     float: left;
     clear: left;
@@ -238,6 +247,12 @@ p {
     margin: 0 auto;
     text-align: center;
     width: 300px;
+  }
+  .justify {
+    font-size: 25px;
+    margin: 0 auto;
+    text-align: justify;
+    width: 250px;
   }
   .shrink {
     font-size: 50px;
@@ -283,6 +298,14 @@ p {
     .little-button {
       display: inline-block;
     }
+}
+@media only screen and (max-width: 500px) {
+  .justify {
+    font-size: 25px;
+    margin: 0;
+    text-align: justify;
+    width: 250px;
+  }
 }
 
 

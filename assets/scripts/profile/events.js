@@ -20,12 +20,21 @@ const changePasswordRedirect = function () {
   $('#profile').hide()
   $('#game-board').hide()
   $('#change-pass').show()
+  $('#instructions').hide()
 }
 
 const playGameRedirect = function () {
   $('#profile').show()
   $('#game-board').hide()
   $('#change-pass').hide()
+  $('#instructions').hide()
+}
+
+const instructionsRedirect = function () {
+  $('#instructions').show()
+  $('#game-board').hide()
+  $('#change-pass').hide()
+  $('#profile').hide()
 }
 
 // Takes the two inputs and creates a passwords objects with old and new keys,
@@ -52,6 +61,7 @@ const beginGame = function () {
 const addProfileHandlers = function () {
   $('#sign-out-link').on('click', signOut)
   $('#play-game-link').on('click', playGameRedirect)
+  $('#instructions-link').on('click', instructionsRedirect)
   $('#change-password-link').on('click', changePasswordRedirect)
   $('#change-password-form').on('submit', changePassword)
   $('#vs-guest-button').on('click', beginGame)
