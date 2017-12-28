@@ -44,6 +44,14 @@ const updateGameSuccess = function (data) {
     msgClear()
     // Increase the turn.
     store.turnCounter = store.turnCounter + 1
+    // Show user current turn.
+    if (!(store.turnCounter % 2 === 0)) {
+      $('#even').addClass('secret')
+      $('#odd').removeClass('secret')
+    } else {
+      $('#even').removeClass('secret')
+      $('#odd').addClass('secret')
+    }
   } else {
     // If there are no blank cells, mark the game over.
     // Tell the user.

@@ -10,7 +10,11 @@ const signInSuccess = function (data) {
   store.user = data.user
   const userGreet = store.user.email.split('@')
   // Greet the user.
-  $('.user-greeting').html(userGreet[0]).css('text-transform', 'uppercase')
+  if (userGreet[0].length < 16) {
+    $('.user-greeting').html(userGreet[0]).css('text-transform', 'uppercase')
+  } else {
+    $('.user-greeting').html('Friend').css('text-transform', 'uppercase')
+  }
 }
 
 // Display the fact of an error to the user.

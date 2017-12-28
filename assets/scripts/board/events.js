@@ -111,8 +111,12 @@ const resetEvent = function () {
   $('#8').html('')
   $('#user-msg').html('')
   $('#over-msg').html('')
+  $('#even').removeClass('secret')
+  $('#odd').removeClass('secret')
+  $('.othergreeting').html('')
+  $('.game-link').hide()
+  $('.non-game').show()
 }
-
 // Add click events to board.
 const addBoardHandlers = function () {
   $('#0').on('click', clickEvent)
@@ -125,6 +129,7 @@ const addBoardHandlers = function () {
   $('#7').on('click', clickEvent)
   $('#8').on('click', clickEvent)
   $('#reset-game-button').on('click', resetEvent)
+  $('#quit-game-link').on('click', resetEvent)
 }
 
 module.exports = {

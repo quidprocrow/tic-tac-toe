@@ -43,6 +43,55 @@ section {
   width: 450px;
 }
 
+.player1,
+.player2 {
+  box-sizing: border-box;
+  float: left;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  width: 50%;
+}
+
+.player1 {
+  padding-right: 5px;
+}
+
+.player2 {
+  padding-left: 5px;
+}
+
+.turn {
+  background: $pink;
+  border-radius: 50px;
+  box-sizing: border-box;
+  color: white;
+  margin: 0 0 15px 0;
+  padding: 0 10px;
+  width: 100%;
+}
+
+.ex,
+.oh
+{
+  color: $white;
+  background: $black;
+  width: 100%;
+}
+
+.player1,
+.player2,
+.ex,
+.oh,
+.turn {
+  min-height: 25px;
+}
+
+.secret {
+  color: transparent;
+  background: transparent;
+}
+
 .board-box {
   align-items: center;
   border: 1px solid $black;
@@ -246,6 +295,10 @@ p {
   background-color: $white;
 }
 
+.game-link {
+  display: none;
+}
+
 @media only screen and (max-width: 650px) {
   .navbar-collapse {
     float: left;
@@ -336,6 +389,12 @@ p {
     .quote >
     p {
       font-size: 20px;
+    }
+    .name {
+      display: none;
+    }
+    .turn {
+      margin-top: 10px;
     }
 }
 @media only screen and (max-width: 500px) {

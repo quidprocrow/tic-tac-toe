@@ -65,6 +65,16 @@ const beginGameSuccess = function (data) {
   $('#profile').hide()
   $('#game-board').show()
   $('#reset-game').hide()
+  $('.non-game').hide()
+  $('.game-link').show()
+  const userGreet = store.user.email.split('@')
+  $('#even').addClass('secret')
+  if (userGreet[0].length > 16) {
+    $('.name').css('display', 'none')
+    $('.turn').css('margin-top', '10px')
+  } else {
+    $('.other-greeting').html('guest')
+  }
 }
 
 // Fails to begin a game.
