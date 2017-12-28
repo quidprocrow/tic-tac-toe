@@ -12,6 +12,8 @@ const signOutSuccess = function (data) {
   $('#sign-in').hide()
   $('#sign-up').hide()
   $('#navigation').hide()
+  $('#instructions').hide()
+  $('#credit').hide()
   store.user = null
   // console.log(store)
   $('#game-title').text('BYE BYE BYE').css('text-transform', 'uppercase')

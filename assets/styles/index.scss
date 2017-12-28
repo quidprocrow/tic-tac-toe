@@ -3,6 +3,24 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 $black: #000;
 $white: #fff;
+$pink: #ffc0cb;
+
+body {
+  font-size: 18px;
+}
+
+p >
+a {
+  color: $pink;
+  text-decoration: none;
+}
+
+p
+> a:hover {
+  color: $black;
+  text-decoration: none;
+  text-shadow: 0px 1px $black;
+}
 
 section {
   height: 100%;
@@ -91,6 +109,23 @@ h2 {
   margin: 0 auto;
   text-align: justify;
   width: 600px;
+}
+
+.quote {
+  font-size: 25px;
+  margin: 0 auto 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.quote
+> p {
+  margin: 5px 0px;
+  padding: 0px;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 .little-button {
@@ -298,6 +333,10 @@ p {
     .little-button {
       display: inline-block;
     }
+    .quote >
+    p {
+      font-size: 20px;
+    }
 }
 @media only screen and (max-width: 500px) {
   .justify {
@@ -305,6 +344,10 @@ p {
     margin: 0;
     text-align: justify;
     width: 250px;
+  }
+  .quote >
+  p {
+    font-size: 20px;
   }
 }
 

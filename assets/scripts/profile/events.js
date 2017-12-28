@@ -21,6 +21,7 @@ const changePasswordRedirect = function () {
   $('#game-board').hide()
   $('#change-pass').show()
   $('#instructions').hide()
+  $('#credit').hide()
 }
 
 const playGameRedirect = function () {
@@ -28,10 +29,20 @@ const playGameRedirect = function () {
   $('#game-board').hide()
   $('#change-pass').hide()
   $('#instructions').hide()
+  $('#credit').hide()
 }
 
 const instructionsRedirect = function () {
   $('#instructions').show()
+  $('#game-board').hide()
+  $('#change-pass').hide()
+  $('#profile').hide()
+  $('#credit').hide()
+}
+
+const creditRedirect = function () {
+  $('#credit').show()
+  $('#instructions').hide()
   $('#game-board').hide()
   $('#change-pass').hide()
   $('#profile').hide()
@@ -62,6 +73,7 @@ const addProfileHandlers = function () {
   $('#sign-out-link').on('click', signOut)
   $('#play-game-link').on('click', playGameRedirect)
   $('#instructions-link').on('click', instructionsRedirect)
+  $('#credit-link').on('click', creditRedirect)
   $('#change-password-link').on('click', changePasswordRedirect)
   $('#change-password-form').on('submit', changePassword)
   $('#vs-guest-button').on('click', beginGame)
