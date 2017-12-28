@@ -18,7 +18,14 @@ const signOut = function (event) {
 // User is directed to change password section,
 const changePasswordRedirect = function () {
   $('#profile').hide()
+  $('#game-board').hide()
   $('#change-pass').show()
+}
+
+const playGameRedirect = function () {
+  $('#profile').show()
+  $('#game-board').hide()
+  $('#change-pass').hide()
 }
 
 // Takes the two inputs and creates a passwords objects with old and new keys,
@@ -43,8 +50,9 @@ const beginGame = function () {
 
 // Add click events.
 const addProfileHandlers = function () {
-  $('#sign-out-button').on('click', signOut)
-  $('#change-password-button').on('click', changePasswordRedirect)
+  $('#sign-out-link').on('click', signOut)
+  $('#play-game-link').on('click', playGameRedirect)
+  $('#change-password-link').on('click', changePasswordRedirect)
   $('#change-password-form').on('submit', changePassword)
   $('#vs-guest-button').on('click', beginGame)
 }

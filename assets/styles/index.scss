@@ -52,6 +52,7 @@ h2 {
 
 .big-button {
   background-color: $black;
+  border: 0;
   color: $white;
   display: block;
   font-family: 'Josefin Sans', sans-serif;
@@ -92,7 +93,7 @@ h2 {
   width: 150px;
 }
 
-.change-pass
+.change-pass-form
 > .little-button {
   width: 300px;
 }
@@ -146,6 +147,142 @@ p {
   padding: 50px 0 0;
   text-align: center;
   width: 610px;
+}
+
+.navbar {
+  background: $black;
+  border-radius: 0;
+  color: $white;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 25px;
+}
+
+.navbar-toggler {
+  background: $black;
+  border: 0;
+  float: right;
+  height: 32px;
+  margin: 7px 7px 0;
+  padding: 0;
+  width: 32px;
+}
+
+.navbar-brand {
+  background: $white;
+  color: $black;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 25px;
+}
+
+.navbar-nav {
+  list-style-type: none;
+}
+
+.nav-item {
+  margin: 7px 0 0;
+  padding: 0 15px;
+
+}
+
+.nav-item
+> a {
+  color: $white;
+  text-decoration: none;
+  width: 300px;
+}
+
+.nav-item
+> a:hover {
+  color: $black;
+  background-color: $white;
+}
+
+@media only screen and (max-width: 650px) {
+  .invisible {
+    display: block;
+    height: 0;
+    width: 0
+  }
+  .navbar-collapse {
+    float: left;
+    clear: left;
+    padding-left: 7px;
+  }
+  .nav-item
+  > a{
+      display: block;
+  }
+  .big-button {
+    background-color: $black;
+    border: 0;
+    color: $white;
+    display: block;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 50px;
+    height: 150px;
+    margin: 20px auto;
+    text-align: center;
+    width: 300px;
+  }
+  .input-field {
+    background: $white;
+    border: 1px solid $black;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+    height: 35px;
+    margin: 5px auto;
+    width: 298px;
+  }
+
+  .center {
+    margin: 0 auto;
+    text-align: center;
+    width: 300px;
+  }
+  .shrink {
+    font-size: 50px;
+    }
+    p {
+      width: 400px;
+      padding: 0;
+    }
+    .board {
+      margin: 0 auto;
+      width: 300px;
+    }
+    .board-row {
+      width: 300px;
+      margin: 0;
+      padding: 0;
+    }
+    .board-box {
+      min-height: 100px;
+      min-width: 100px;
+    }
+    .board-box
+    > p {
+      font-size: 20px;
+      max-width: 50px;
+    }
+    .message >
+    p {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    }
+    .vs {
+      width: 100%;
+      min-height: 100px;
+      float: none;
+    }
+    .vs-row {
+      float: none;
+      width: 100%;
+    }
+    .vs-row >
+    .little-button {
+      display: inline-block;
+    }
 }
 
 

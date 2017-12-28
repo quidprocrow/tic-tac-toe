@@ -20,7 +20,7 @@
         <button class="big-button" id="sign-up-button">SIGN UP</button>
       </section>
       <section id="sign-in">
-        <h1>SIGN IN</h1>
+        <h1 class="shrink">SIGN IN</h1>
         <form id="sign-in-form">
           <div class="center">
             <input type="text" name="credentials[email]" placeholder="EMAIL" class="input-field">
@@ -35,7 +35,7 @@
       </section>
       <section id="sign-up">
         <form id="sign-up-form">
-          <h1>SIGN UP</h1>
+          <h1 class="shrink">SIGN UP</h1>
           <div class="center">
             <input type="text" name="credentials[email]" placeholder="EMAIL" class="input-field">
           </div>
@@ -50,8 +50,33 @@
           </div>
         </form>
       </section>
+      <nav class="navbar navbar-toggleable-md navbar-light bg-faded" style="background: black;" id="navigation">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <img src="tic-tac-toe-icon.png" alt="Toggle me!">
+        </button>
+        <a class="navbar-brand" href="#">HI <span class="user-greeting"></span></a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#" id="play-game-link">PLAY</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="instructions-link">INSTRUCTIONS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="stats-link">STATS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="change-password-link">CHANGE PASS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="sign-out-link">SIGN OUT</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
       <section id="profile" class="profile">
-        <h1 id="profile-greeting"></h1>
         <div class="center">
           <div class="vs">
             <h2>PLAY VS.</h2>
@@ -61,19 +86,10 @@
               <button class="little-button" ID="vs-play-button">PLAYER</button>
               <button class="little-button" ID="vs-ai-button">AI</button>
             </div>
-          </div>
-          <div class="profile-bottom">
-            <button class="little-button" ID="instructions-button">INSTRUCTIONS</button>
-            <button class="little-button" ID="personal-statistics-button">PERSONAL STATISTICS</button>
-          </div>
-            <div class="profile-bottom">
-              <button class="little-button" ID="sign-out-button">SIGN OUT</button>
-              <button class="little-button" ID="change-password-button">CHANGE PASSWORD</button>
-        </div>
       </section>
       <section id="change-pass" class="change-pass">
-        <h1>CHANGE PASS</h1>
-        <form id="change-password-form">
+        <h1 class="shrink">CHANGE PASS</h1>
+        <form id="change-password-form" class="change-pass-form">
           <div class="center">
           <input type="password" name= "passwords[old]" placeholder="OLD PASSWORD" class="input-field">
           </div>

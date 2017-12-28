@@ -7,6 +7,11 @@ const signOutSuccess = function (data) {
   // console.log('Success')
   $('#profile').hide()
   $('#intro').show()
+  $('#change-pass').hide()
+  $('#game-board').hide()
+  $('#sign-in').hide()
+  $('#sign-up').hide()
+  $('#navigation').hide()
   store.user = null
   // console.log(store)
   $('#game-title').text('BYE BYE BYE').css('text-transform', 'uppercase')

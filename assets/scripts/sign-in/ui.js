@@ -5,19 +5,12 @@ const store = require('../store')
 // Hide the previous section, show the profile, and store user information.
 const signInSuccess = function (data) {
   $('#sign-in').hide()
+  $('#navigation').show()
   $('#profile').show()
   store.user = data.user
   const userGreet = store.user.email.split('@')
   // Greet the user.
-  $('#profile-greeting').html('Hi ' + userGreet[0] + ' !').css('text-transform', 'uppercase')
-  if (userGreet[0].length > 12) {
-    $('#profile-greeting').css('font-size', '50px')
-  } else if (userGreet[0].length > 9) {
-    $('#profile-greeting').css('font-size', '75px')
-  } else {
-    $('#profile-greeting').css('font-size', '120px')
-    $('#sign-in-error').html('')
-  }
+  $('.user-greeting').html(userGreet[0]).css('text-transform', 'uppercase')
 }
 
 // Display the fact of an error to the user.
