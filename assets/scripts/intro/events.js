@@ -1,11 +1,13 @@
 'use strict'
 
+// Goes to sign in section, hides the intro.
 const introSignIn = function (event) {
   event.preventDefault()
   $('#intro').hide()
   $('#sign-in').show()
 }
 
+// Goes to sign up section, hides the intro.
 const introSignUp = function (event) {
   event.preventDefault()
   $('#intro').hide()

@@ -3,6 +3,7 @@
 const config = require('../config')
 const store = require('../store')
 
+// Signs out user.
 const signOutUser = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/sign-out/' + store.user.id,
@@ -13,6 +14,7 @@ const signOutUser = function (data) {
   })
 }
 
+// Changes user password.
 const changePasswordUser = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/change-password/' + store.user.id,
@@ -24,6 +26,7 @@ const changePasswordUser = function (data) {
   })
 }
 
+// Grabs the total games.
 const getTotalGames = function () {
   return $.ajax({
     url: config.apiOrigin + '/games',

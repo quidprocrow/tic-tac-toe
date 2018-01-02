@@ -92,6 +92,10 @@ const beginGameFailure = function () {
   $('#profile').append(errorHtml)
 }
 
+// When the stats page is loaded, takes data from a GET request to populate
+// a series of statistics.
+// Will do this each time the stats page is clicked, so the data is always
+// up to date.
 const statsLoadSuccess = function (data) {
   store.gamesStats = data.games
   const overTest = (input) => input.over === true

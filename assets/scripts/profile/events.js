@@ -66,9 +66,14 @@ const onStatsLoad = function () {
     .catch(ui.statsLoadFailure)
 }
 
+// When clicked, grabs the total games stored when the stats page loads
+// and identifies those that are incomplete.
+// For each of those incomplete games, appends a paragraph with its ID and
+// the user you played against.
+// In future versions, this would be used to ensure players can return to
+// incomplete games.
 const onIncompleteShow = function (event) {
   event.preventDefault()
-  console.log(store.gamesStats)
   const overTest = (input) => input.over === false
   const incompleteGames = store.gamesStats.filter(overTest)
   for (let i = 0; i < incompleteGames.length; i++) {
