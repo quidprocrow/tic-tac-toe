@@ -68,40 +68,6 @@ const beginGame = function () {
     .catch(ui.beginGameFailure)
 }
 
-// Creates a game, stores the value, and redirects user to the game board.
-const quitGame = function () {
-  const resetEvent = function () {
-    // Resets all those parts of the store file dealing with this game specifically.
-    store.game = null
-    store.turnCounter = null
-    store.currentPlayer = null
-    store.currentIndex = null
-    // Hides the button itself and the board; shows the profile.
-    // Changes navigation.
-    $('#reset-game').hide()
-    $('#game-board').hide()
-    $('#profile').show()
-    $('.non-game').css('display', 'inline')
-    $('.game-link').css('display', 'none')
-    // Clears the board.
-    $('#0').html('')
-    $('#1').html('')
-    $('#2').html('')
-    $('#3').html('')
-    $('#4').html('')
-    $('#5').html('')
-    $('#6').html('')
-    $('#7').html('')
-    $('#8').html('')
-    $('#user-msg').html('')
-    $('#over-msg').html('')
-    $('#even').removeClass('secret')
-    $('#even').removeClass('secret')
-    $('.othergreeting').html('')
-    $('.game-link').hide()
-  }
-}
-
 // Add click events.
 const addProfileHandlers = function () {
   $('#sign-out-link').on('click', signOut)
