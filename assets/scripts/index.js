@@ -26,6 +26,7 @@ $(() => {
   $('#navigation').hide()
   $('#instructions').hide()
   $('#credit').hide()
+  $('#personal-statistics').hide()
   $('.game-link').hide()
 })
 

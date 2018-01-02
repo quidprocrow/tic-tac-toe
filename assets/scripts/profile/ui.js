@@ -14,6 +14,7 @@ const signOutSuccess = function (data) {
   $('#navigation').hide()
   $('#instructions').hide()
   $('#credit').hide()
+  $('#personal-statistics').hide()
   $('#sign-out-error').remove()
   store.user = null
   // console.log(store)

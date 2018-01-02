@@ -72,7 +72,8 @@ section {
 }
 
 .ex,
-.oh
+.oh,
+.stats-top
 {
   color: $white;
   background: $black;
@@ -196,6 +197,10 @@ h2 {
   width: 300px;
 }
 
+.show-incomplete-form
+> .little-button {
+  width: 300px;
+}
 .reset
 > .little-button {
   width: 300px;
@@ -295,6 +300,20 @@ p {
   background-color: $white;
 }
 
+.stats-box {
+  box-sizing: border-box;
+  float: left;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 20px;
+  min-height: 100px;
+  text-align: center;
+  width: 50%;
+  padding: 0 5px;
+}
+.total {
+  background: $white;
+}
+
 @media only screen and (max-width: 650px) {
   .navbar-collapse {
     float: left;
@@ -345,7 +364,8 @@ p {
       width: 400px;
       padding: 0;
     }
-    .board {
+    .board,
+    .personal-statistics {
       margin: 0 auto;
       width: 300px;
     }
@@ -362,6 +382,17 @@ p {
     > p {
       font-size: 20px;
       max-width: 50px;
+    }
+    .stats-box,
+    .stats-top {
+      min-height: 25px;
+      min-width: 300px;
+    }
+    .stats-box
+    > .total {
+      font-size: 20px;
+      max-width: 300px;
+      min-height: 75px;
     }
     .message >
     p {

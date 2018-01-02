@@ -22,26 +22,43 @@ const changePasswordRedirect = function () {
   $('#change-pass').show()
   $('#instructions').hide()
   $('#credit').hide()
+  $('#personal-statistics').hide()
 }
 
+// User is directed to the play section.
 const playGameRedirect = function () {
   $('#profile').show()
   $('#game-board').hide()
   $('#change-pass').hide()
   $('#instructions').hide()
   $('#credit').hide()
+  $('#personal-statistics').hide()
 }
 
+// User is directed to the instructions.
 const instructionsRedirect = function () {
   $('#instructions').show()
   $('#game-board').hide()
   $('#change-pass').hide()
   $('#profile').hide()
   $('#credit').hide()
+  $('#personal-statistics').hide()
 }
 
+// User is directed to the credit.
 const creditRedirect = function () {
   $('#credit').show()
+  $('#instructions').hide()
+  $('#game-board').hide()
+  $('#change-pass').hide()
+  $('#profile').hide()
+  $('#personal-statistics').hide()
+}
+
+// User is directed to the stats page.
+const statsRedirect = function () {
+  $('#personal-statistics').show()
+  $('#credit').hide()
   $('#instructions').hide()
   $('#game-board').hide()
   $('#change-pass').hide()
@@ -77,6 +94,7 @@ const addProfileHandlers = function () {
   $('#change-password-link').on('click', changePasswordRedirect)
   $('#change-password-form').on('submit', changePassword)
   $('#vs-guest-button').on('click', beginGame)
+  $('#stats-link').on('click', statsRedirect)
 }
 
 module.exports = {
