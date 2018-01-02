@@ -55,6 +55,13 @@ const creditRedirect = function () {
   $('#personal-statistics').hide()
 }
 
+// To load stats on redirect to stats page.
+const onStatsLoad = function () {
+  api.getTotalGames()
+    .then(ui.statsLoadSuccess)
+    .catch(ui.statsLoadFailure)
+}
+
 // User is directed to the stats page.
 const statsRedirect = function () {
   $('#personal-statistics').show()
@@ -63,6 +70,7 @@ const statsRedirect = function () {
   $('#game-board').hide()
   $('#change-pass').hide()
   $('#profile').hide()
+  onStatsLoad()
 }
 
 // Takes the two inputs and creates a passwords objects with old and new keys,
@@ -95,6 +103,7 @@ const addProfileHandlers = function () {
   $('#change-password-form').on('submit', changePassword)
   $('#vs-guest-button').on('click', beginGame)
   $('#stats-link').on('click', statsRedirect)
+  // $('#show-incomplete').on('submit', onStatsLoad)
 }
 
 module.exports = {

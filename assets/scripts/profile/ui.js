@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store')
+const win = require('../board/win')
 
 // Hide the previous section, show the profile, and store user information.
 const signOutSuccess = function (data) {
@@ -90,11 +91,46 @@ const beginGameFailure = function () {
   $('#profile').append(errorHtml)
 }
 
+const statsLoadSuccess = function (data) {
+  const overTest = (input) => input.over === true
+  const totalPlayed = data.games.length
+  let statHtml = (`${totalPlayed}`)
+  $('#total-games').html(statHtml)
+  const totalOver = data.games.filter(overTest)
+  const totalIncomplete = totalPlayed - totalOver.length
+  statHtml = (`${totalIncomplete}`)
+  $('#total-games-incomplete').html(statHtml)
+  const winCalculation = (accumulator, currentValue) => {
+    if (win.winEvent(currentValue.cells) === true) {
+      accumulator = accumulator + 1
+    }
+    return accumulator
+  }
+  const tieCalculation = (accumulator, currentValue) => {
+    if (win.winEvent(currentValue.cells) === false) {
+      accumulator = accumulator + 1
+    }
+    return accumulator
+  }
+  const totalWon = data.games.reduce(winCalculation, 0)
+  statHtml = (`${totalWon}`)
+  $('#total-games-won').html(statHtml)
+  const totalTied = totalOver.reduce(tieCalculation, 0)
+  $('#total-games-tied').html(statHtml)
+}
+
+const statsLoadFailure = function (data) {
+  const errorHtml = (`<p>Hmm. Something is terribly wrong.</p>`)
+  $('#game-error').html(errorHtml)
+}
+
 module.exports = {
   signOutFailure,
   signOutSuccess,
   changePassSuccess,
   changePassFailure,
   beginGameFailure,
-  beginGameSuccess
+  beginGameSuccess,
+  statsLoadSuccess,
+  statsLoadFailure
 }

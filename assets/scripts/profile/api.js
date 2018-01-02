@@ -24,7 +24,18 @@ const changePasswordUser = function (data) {
   })
 }
 
+const getTotalGames = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signOutUser,
-  changePasswordUser
+  changePasswordUser,
+  getTotalGames
 }
