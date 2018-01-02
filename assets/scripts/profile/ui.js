@@ -14,6 +14,7 @@ const signOutSuccess = function (data) {
   $('#navigation').hide()
   $('#instructions').hide()
   $('#credit').hide()
+  $('#sign-out-error').remove()
   store.user = null
   // console.log(store)
   $('#game-title').text('BYE BYE BYE').css('text-transform', 'uppercase')
@@ -28,7 +29,7 @@ const signOutFailure = function (data) {
     <p>Contact the
     <a href="mailto:windmillwarrior@gmail.com">administrator</a> otherwise.</p>
     `)
-  $('#profile').append(errorHtml)
+  $('#profile').append(errorHtml).attr('id', 'sign-out-error')
 }
 
 // Indicate success and invite user back to profile.
