@@ -9,7 +9,7 @@ It was created with
 *  Javascript
 *  HTML
 *  Sass
-⋅⋅* Both the scripting language and the attitude.
+  - Both the scripting language and the attitude.
 
 There is an [active site] (http://quidprocrow.github.io/tic-tac-toe) for usage. To download and manipulate, follow the instructions below.
 
@@ -39,4 +39,4 @@ The major files to attend to are the [`./index.html`](./index.html), and all fil
 
 ```
 - The remaining scripts are broken into directories that represent the HTML sections where those scripts will be called.
-⋅⋅⋅ For example, the scripts for the events in the 'sign-in' section of the game are contained in [`./assets/scripts/sign-in/`](./assets/scripts/signin/), split into JS files for making an API request, for handling events on the page, and for presenting user interface information.
+  - For example, the scripts for the events in the 'sign-in' section of the game are contained in [`./assets/scripts/sign-in/`](./assets/scripts/signin/), split into JS files for making an API request, for handling events on the page, and for presenting user interface information.
