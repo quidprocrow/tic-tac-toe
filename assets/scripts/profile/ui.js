@@ -92,6 +92,7 @@ const beginGameFailure = function () {
 }
 
 const statsLoadSuccess = function (data) {
+  store.gamesStats = data.games
   const overTest = (input) => input.over === true
   const totalPlayed = data.games.length
   let statHtml = (`${totalPlayed}`)
@@ -116,6 +117,7 @@ const statsLoadSuccess = function (data) {
   statHtml = (`${totalWon}`)
   $('#total-games-won').html(statHtml)
   const totalTied = totalOver.reduce(tieCalculation, 0)
+  statHtml = (`${totalTied}`)
   $('#total-games-tied').html(statHtml)
 }
 

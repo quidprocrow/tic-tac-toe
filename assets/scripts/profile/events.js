@@ -23,6 +23,7 @@ const changePasswordRedirect = function () {
   $('#instructions').hide()
   $('#credit').hide()
   $('#personal-statistics').hide()
+  $('#show-games').html('')
 }
 
 // User is directed to the play section.
@@ -33,6 +34,7 @@ const playGameRedirect = function () {
   $('#instructions').hide()
   $('#credit').hide()
   $('#personal-statistics').hide()
+  $('#show-games').html('')
 }
 
 // User is directed to the instructions.
@@ -43,6 +45,7 @@ const instructionsRedirect = function () {
   $('#profile').hide()
   $('#credit').hide()
   $('#personal-statistics').hide()
+  $('#show-games').html('')
 }
 
 // User is directed to the credit.
@@ -53,6 +56,7 @@ const creditRedirect = function () {
   $('#change-pass').hide()
   $('#profile').hide()
   $('#personal-statistics').hide()
+  $('#show-games').html('')
 }
 
 // To load stats on redirect to stats page.
@@ -60,6 +64,28 @@ const onStatsLoad = function () {
   api.getTotalGames()
     .then(ui.statsLoadSuccess)
     .catch(ui.statsLoadFailure)
+}
+
+const onIncompleteShow = function (event) {
+  event.preventDefault()
+  console.log(store.gamesStats)
+  const overTest = (input) => input.over === false
+  const incompleteGames = store.gamesStats.filter(overTest)
+  for (let i = 0; i < incompleteGames.length; i++) {
+    let vsPlayer = ''
+    if (incompleteGames[i].player_o === null) {
+      vsPlayer = 'Guest'
+    } else {
+      vsPlayer = incompleteGames[i].player_o
+    }
+    const gameId = incompleteGames[i].id
+    const gameHtml = (`
+      <p>
+      <B>GAME ID #${gameId}</B>: VERSUS <B>${vsPlayer}</B>
+      </p>
+      `)
+    $('#show-games').append(gameHtml).addClass('uppercase').addClass('total')
+  }
 }
 
 // User is directed to the stats page.
@@ -70,6 +96,7 @@ const statsRedirect = function () {
   $('#game-board').hide()
   $('#change-pass').hide()
   $('#profile').hide()
+  $('#show-games').html('')
   onStatsLoad()
 }
 
@@ -103,7 +130,7 @@ const addProfileHandlers = function () {
   $('#change-password-form').on('submit', changePassword)
   $('#vs-guest-button').on('click', beginGame)
   $('#stats-link').on('click', statsRedirect)
-  // $('#show-incomplete').on('submit', onStatsLoad)
+  $('#show-incomplete').on('submit', onIncompleteShow)
 }
 
 module.exports = {
