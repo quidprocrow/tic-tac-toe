@@ -26,6 +26,7 @@ $(() => {
   $('#navigation').hide()
   $('#instructions').hide()
   $('#credit').hide()
+  $('.game-link').hide()
 })
 
 // use require with a reference to bundle the file and use it in this file

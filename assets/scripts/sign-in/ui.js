@@ -7,6 +7,9 @@ const signInSuccess = function (data) {
   $('#sign-in').hide()
   $('#navigation').show()
   $('#profile').show()
+  // Clear any errors from previous sign in attempts.
+  $('#sign-in-error').html('')
+  $('#sign-up-notification').html('')
   store.user = data.user
   const userGreet = store.user.email.split('@')
   // Greet the user.
