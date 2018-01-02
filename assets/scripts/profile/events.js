@@ -84,7 +84,7 @@ const onIncompleteShow = function (event) {
       <B>GAME ID #${gameId}</B>: VERSUS <B>${vsPlayer}</B>
       </p>
       `)
-    $('#show-games').append(gameHtml).addClass('uppercase').addClass('total')
+    $('#show-games').append(gameHtml).addClass('uppercase').addClass('board-row').addClass('total').addClass('scooch')
   }
 }
 
