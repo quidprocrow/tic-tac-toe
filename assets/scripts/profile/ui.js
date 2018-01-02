@@ -32,7 +32,7 @@ const signOutFailure = function (data) {
     <p>Contact the
     <a href="mailto:windmillwarrior@gmail.com">administrator</a> otherwise.</p>
     `)
-  $('#profile').append(errorHtml).attr('id', 'sign-out-error')
+  $('#profile').append(errorHtml).attr('id', 'sign-out-error').addClass('scooch')
 }
 
 // Indicate success and invite user back to profile.

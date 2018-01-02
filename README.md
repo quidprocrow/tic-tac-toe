@@ -58,7 +58,7 @@ Note that *quitting* does not mark the game as over.
 
 ## Future Work
 
-My hope is to add the ability to review the user's personal win and loss statistics, as well as two artificial intelligences to play against (who would feature in the user's statistics), as well as eventually adding the ability to play against remote users.
+My hope is to add the ability to play against two artificial intelligences (who would feature in the user's statistics), as well as eventually adding the ability to play against remote users.
 
 If all that works, I would also like to add the ability for a player to return to a game that was previously quit.
 
