@@ -48,7 +48,7 @@ The wireframing for this project is contained within the [`./wireframes/`](./wir
 
 Since a game can only created by an authenticated user, the site is designed around barring access to creating a game unless a proper *sign-in* by a previously *signed-up* user occurs.
 
-Once that obtains, the user has access to a profile page with the option to *create a game against a guest*, with a navigation menu directing the user *view instructions*, *view statistics*, *change their password*, *view the credits*, or *sign out*.
+Once that obtains, the user has access to a profile page with the option to *create a game against a guest* or *against an artificial intelligence*, with a navigation menu directing the user *view instructions*, *view statistics*, *change their password*, *view the credits*, or *sign out*.
 
 *Creating a game* stores game information, and directs the user to a board that indicates whose turn it is and notifies when the game ends, with the results (tie or win by a particular player). When the game is over, it is marked as such.
 
@@ -58,7 +58,7 @@ Note that *quitting* does not mark the game as over.
 
 ## Future Work
 
-My hope is to add the ability to play against two artificial intelligences (who would feature in the user's statistics), as well as eventually adding the ability to play against remote users.
+My hope is to add the ability to play against two artificial intelligences (currently there is only one, *John Cena*), as well as eventually adding the ability to play against remote users.
 
 If all that works, I would also like to add the ability for a player to return to a game that was previously quit.
 
