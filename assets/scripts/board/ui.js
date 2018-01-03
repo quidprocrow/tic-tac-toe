@@ -6,6 +6,7 @@ const api = require('./api.js')
 // Clear any errors from the page's display.
 const msgClear = function () {
   $('#user-msg').html('')
+  $('#ai-user-msg').html('')
 }
 
 // Makes the API reflect that the game is over, shows reset button.

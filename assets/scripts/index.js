@@ -7,6 +7,7 @@ const introEvents = require('./intro/events.js')
 const signInEvents = require('./sign-in/events.js')
 const signUpEvents = require('./sign-up/events.js')
 const profileEvents = require('./profile/events.js')
+const aiEvents = require('./board/ai/events.js')
 
 // All sections except intro hidden.
 // Intro buttons direct accordingly, showing the appropriate form and hiding the intro.
@@ -18,6 +19,7 @@ $(() => {
   signUpEvents.addSignUpHandlers()
   profileEvents.addProfileHandlers()
   boardEvents.addBoardHandlers()
+  aiEvents.addAiBoardHandlers()
   $('#change-pass').hide()
   $('#profile').hide()
   $('#game-board').hide()
@@ -27,6 +29,7 @@ $(() => {
   $('#instructions').hide()
   $('#credit').hide()
   $('#personal-statistics').hide()
+  $('#ai-game-board').hide()
   $('.game-link').hide()
 })
 

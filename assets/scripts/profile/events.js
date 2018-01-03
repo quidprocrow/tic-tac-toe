@@ -125,6 +125,13 @@ const beginGame = function () {
     .catch(ui.beginGameFailure)
 }
 
+// Creates a game vs an ai, stores the value, and redirects user to the ai game board.
+const beginAiGame = function () {
+  gameApi.createGame()
+    .then(ui.beginAiGameSuccess)
+    .catch(ui.beginAiGameFailure)
+}
+
 // Add click events.
 const addProfileHandlers = function () {
   $('#sign-out-link').on('click', signOut)
@@ -136,6 +143,7 @@ const addProfileHandlers = function () {
   $('#vs-guest-button').on('click', beginGame)
   $('#stats-link').on('click', statsRedirect)
   $('#show-incomplete').on('submit', onIncompleteShow)
+  $('#vs-ai-button').on('click', beginAiGame)
 }
 
 module.exports = {

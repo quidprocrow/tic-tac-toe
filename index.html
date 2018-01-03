@@ -264,5 +264,72 @@
             <button class="little-button" id="reset-game-button">NEW GAME</button>
           </div>
       </section>
+      <!-- AI GAME SECTION -->
+            <section id="ai-game-board" class="board">
+              <div class="board-row">
+                <div class="player1">
+                  <div class="ex">
+                    X
+                  </div>
+                  <div class="username">
+                    <span class="user-greeting uppercase name"></span>
+                  </div>
+                  <div class="turn" id="ai-odd">
+                    TURN
+                  </div>
+                </div>
+                <div class="player2">
+                  <div class="oh">
+                    O
+                  </div>
+                  <div class="username">
+                    <span class="other-greeting uppercase name">GUEST</span>
+                  </div>
+                  <div class="turn" id="ai-even">
+                    TURN
+                  </div>
+                </div>
+              </div>
+                <div class="board-row">
+                  <div class="board-box" id="02" data-cell-index="0">
+
+                  </div>
+                  <div class="board-box" id="12" data-cell-index="1">
+
+                  </div>
+                  <div class="board-box" id="22" data-cell-index="2">
+
+                  </div>
+                </div>
+                <div class="board-row">
+                    <div class="board-box" id="32" data-cell-index="3">
+
+                    </div>
+                    <div class="board-box" id="42" data-cell-index="4">
+
+                    </div>
+                    <div class="board-box" id="52" data-cell-index="5">
+
+                    </div>
+                </div>
+                <div class="board-row">
+                    <div class="board-box" id="62" data-cell-index="6">
+
+                    </div>
+                    <div class="board-box" id="72" data-cell-index="7">
+
+                    </div>
+                    <div class="board-box" id="82" data-cell-index="8">
+
+                    </div>
+                </div>
+                <div id="ai-user-msg" class="message">
+                </div>
+                <div id="ai-over-msg" class="message">
+                </div>
+                <div id="ai-reset-game" class="board-row reset">
+                  <button class="little-button" id="ai-reset-game-button">NEW GAME</button>
+                </div>
+            </section>
     </body>
 </html>

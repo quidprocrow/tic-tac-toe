@@ -95,9 +95,11 @@ const resetEvent = function () {
   store.turnCounter = null
   store.currentPlayer = null
   store.currentIndex = null
+  store.aiTime = false
   // Hides the button itself and the board; shows the profile.
   $('#reset-game').hide()
   $('#game-board').hide()
+  $('#ai-game-board').hide()
   $('#profile').show()
   // Clears the board.
   $('#0').html('')
@@ -116,6 +118,18 @@ const resetEvent = function () {
   $('.othergreeting').html('')
   $('.game-link').hide()
   $('.non-game').show()
+  // Also clears the AI board.
+  $('#02').html('')
+  $('#12').html('')
+  $('#22').html('')
+  $('#32').html('')
+  $('#42').html('')
+  $('#52').html('')
+  $('#62').html('')
+  $('#72').html('')
+  $('#82').html('')
+  $('#ai-user-msg').html('')
+  $('#ai-over-msg').html('')
 }
 // Add click events to board.
 const addBoardHandlers = function () {
@@ -134,5 +148,6 @@ const addBoardHandlers = function () {
 
 module.exports = {
   clickEvent,
-  addBoardHandlers
+  addBoardHandlers,
+  resetEvent
 }

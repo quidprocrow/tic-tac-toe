@@ -61,10 +61,10 @@ const changePassFailure = function (data) {
 }
 
 // Successfully begins a game.
+// Stores the game data returned by the API, sets the turn counter, hides all
+// other sections, and shows the game-specific navigation.
 const beginGameSuccess = function (data) {
   store.game = data.game
-  // console.log('I am game data', data.game)
-  // console.log('I am stored game data', store.game)
   store.turnCounter = 1
   $('#profile').hide()
   $('#game-board').show()
@@ -81,8 +81,43 @@ const beginGameSuccess = function (data) {
   }
 }
 
+// Successfully begins an ai game.
+// Stores the game data returned by the API, sets the turn counter, hides all
+// other sections, and shows the game-specific navigation.
+// Major differences are in the ids (different html section).
+const beginAiGameSuccess = function (data) {
+  store.game = data.game
+  store.aiTime = false
+  store.turnCounter = 1
+  $('#profile').hide()
+  $('#game-board').hide()
+  $('#ai-game-board').show()
+  $('#ai-reset-game').hide()
+  $('.non-game').hide()
+  $('.game-link').show()
+  const userGreet = store.user.email.split('@')
+  $('#ai-even').addClass('secret')
+  if (userGreet[0].length > 16) {
+    $('.name').css('display', 'none')
+    $('.turn').css('margin-top', '10px')
+  } else {
+    $('.other-greeting').html('John Cena')
+  }
+}
+
 // Fails to begin a game.
 const beginGameFailure = function () {
+  const errorHtml = (`<p>
+    <b>Oops!</b> There's been an error!
+    </p>
+    <p>Contact the
+    <a href="mailto:windmillwarrior@gmail.com">administrator</a>.</p>
+    `)
+  $('#profile').append(errorHtml)
+}
+
+// Fails to begin a game.
+const beginAiGameFailure = function () {
   const errorHtml = (`<p>
     <b>Oops!</b> There's been an error!
     </p>
@@ -139,5 +174,7 @@ module.exports = {
   beginGameFailure,
   beginGameSuccess,
   statsLoadSuccess,
-  statsLoadFailure
+  statsLoadFailure,
+  beginAiGameFailure,
+  beginAiGameSuccess
 }
