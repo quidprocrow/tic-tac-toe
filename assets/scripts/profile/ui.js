@@ -142,7 +142,7 @@ const statsLoadSuccess = function (data) {
   statHtml = (`${totalIncomplete}`)
   $('#total-games-incomplete').html(statHtml)
   const winCalculation = (accumulator, currentValue) => {
-    if (win.winEvent(currentValue.cells) === true) {
+    if (win.xWinEvent(currentValue.cells) === true) {
       accumulator = accumulator + 1
     }
     return accumulator
