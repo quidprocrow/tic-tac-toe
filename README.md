@@ -5,10 +5,12 @@
 This is a responsive single-page tic-tac-toe game that allows users to login in, update their account information, and play tic-tac-toe against a guest user on the same device.
 
 It was created with
-* jQuery
+*  jQuery
 *  Javascript
 *  HTML
 *  Sass
+*  AJAX
+*  JSON
 
 The stylistic additions are credited in the **Credit** section of [`./index.html`](./index.html).
 
@@ -31,7 +33,7 @@ The major files to attend to are the [`./index.html`](./index.html), and all fil
 - [`index.js`] adds the event handlers that direct all game and user actions, as well as hiding and showing sections as appropriate. To start, a user sees only the ability to sign-in or sign-up.
 - [`config.js`] sets the API url.
 - [`lib/get-form-fields.js`] is a function provided by General Assembly Boston that accepts named input fields and returns an object that conforms to the input names as if they were sub-objects, e.g. an input with the name of "name[surname]" returns an object:
--
+
 ```
 {
   name: {
@@ -69,17 +71,18 @@ Note that **quitting** does not mark the game as over.
 
 ## Future Work
 
+- [x] Create a game board for a user and a guest on the same device.
+- [x] Create an artificial intelligence.
+- [ ] Allow multiple users to play on the same device.
+- [ ] Allow multiple users to play on remote devices.
+- [ ] Create TIC-PAC-TOE.
+
 My hope, entering into this project, was to create a functional tic-tac-toe game. The puzzle of what makes a winning game strategy -- and what makes a game fun -- pushed me to design an artificial intelligence to play against. **Brian Keegan** eventually convinced me that, even if a winning first-player strategy prioritizes grabbing corners over the center, a good second-player strategy heads straight to the center.
 
 Future additions should include multi-user games, as well as a modified version of the game: **TIC-PAC-TOE**, where each move has a random possibly of a previous move being eaten by Ms. Pac-Man.
 
  The drive for both of these extensions is the capabilities of the API and what makes an enjoyable game. There's something primal about competing against another person instead of an artificial strategist, which makes it that much more fun -- or perhaps it's that games are things meant to be shared. The API supports the ability for multiple user games. The API also allows for game boards to be updated even if they are not completed -- only the interface itself forbids input after a game is marked as over.
 
-- [x] Create a game board for a user and a guest on the same device.
-- [x] Create an artificial intelligence.
-- [ ] Allow multiple users to play on the same device.
-- [ ] Allow multiple users to play on remote devices.
-- [ ] Create TIC-PAC-TOE.
 
 ## Known Issues
 
@@ -89,4 +92,4 @@ Beyond that, there isn't much elegance to my code, and what I'd like to do is to
 
 ## Credit
 
-Beyond the resources used in the interface (credited within the project), the actual coding is a result of course work at **General Assembly** created by an instructor-team lead by **Michael Finneran**, as well as conversations with my cohort. In particular, **Nate Bade** was very helpful in discussions about the artificial intelligence, as were **Brian Keegan** and **Shaun White**. **Rebecca Coras** and **Sarah Burke** both proofread this for project requirements and general errors which helped *immensely*. And who knows how much would have been written without constant access to oatmeal? (Thanks, **GA**.)
+Beyond the resources used in the interface (credited within the project), the actual coding is a result of course work at **General Assembly** created by an instructor-team lead by **Michael Finneran**, as well as conversations with my cohort. In particular, **Nathan Dunn** was very helpful in discussions about the artificial intelligence, as were **Brian Keegan** and **Shaun White**. **Rebecca Coras** and **Sarah Burke** both proofread this for project requirements and general errors which helped *immensely*. And who knows how much would have been written without constant access to oatmeal? (Thanks, **GA**.)

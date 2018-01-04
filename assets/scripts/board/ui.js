@@ -62,6 +62,7 @@ const updateGameSuccess = function (data) {
   }
 }
 
+// Shows user a message if the game failed to update.
 const updateGameFailure = function (data) {
   const invalidMoveHtml = (`<B>How bizzare.</B>`)
   $('#user-msg').html(invalidMoveHtml)
