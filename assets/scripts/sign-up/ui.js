@@ -12,7 +12,6 @@ const redirect = function () {
 // Hide the previous section, show the profile, and store user information.
 const signUpSuccess = function (data) {
   store.user = data.user
-  console.log(data)
   const successHtml = (`<p>Success, <b>${store.user.email}</b>!</p>
     <p>Please <a id="sign-in-redirect">sign in</a>.</p>
     `)

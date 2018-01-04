@@ -36,7 +36,7 @@ const aiMove = function (boardArray) {
   const mapMaker = function (aiArray) {
     for (let i = 0; i < aiArray.length; i++) {
       if (aiArray[i] === '') {
-        if (checkEven(i) && i !== 4 && i === 0) {
+        if (checkEven(i) && i !== 4) {
           aiArray[i] = 5
         } else if (i === 4) {
           aiArray[i] = 7

@@ -118,6 +118,7 @@ const resetEvent = function () {
   $('.othergreeting').html('')
   $('.game-link').hide()
   $('.non-game').show()
+  $('.sign-link').hide()
   // Also clears the AI board.
   $('#02').html('')
   $('#12').html('')
