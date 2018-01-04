@@ -4,8 +4,11 @@ const store = require('../store')
 
 // Hide the previous section, show the profile, and store user information.
 const signInSuccess = function (data) {
+  $('#greeting-space').show()
+  $('#sign-space').hide()
+  $('.non-game').show()
+  $('.sign-link').hide()
   $('#sign-in').hide()
-  $('#navigation').show()
   $('#profile').show()
   // Clear any errors from previous sign in attempts.
   $('#sign-in-error').html('')

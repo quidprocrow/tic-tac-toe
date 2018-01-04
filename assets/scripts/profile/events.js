@@ -5,6 +5,7 @@ const api = require('./api')
 const ui = require('./ui')
 const store = require('../store')
 const gameApi = require('../board/api.js')
+const signInApi = require('../sign-in/api.js')
 
 // User is signed out.
 const signOut = function (event) {
@@ -17,6 +18,7 @@ const signOut = function (event) {
 
 // User is directed to change password section,
 const changePasswordRedirect = function () {
+  $('#two-player').hide()
   $('#profile').hide()
   $('#game-board').hide()
   $('#change-pass').show()
@@ -24,10 +26,12 @@ const changePasswordRedirect = function () {
   $('#credit').hide()
   $('#personal-statistics').hide()
   $('#show-games').html('')
+  $('#profile-error').html('')
 }
 
 // User is directed to the play section.
 const playGameRedirect = function () {
+  $('#two-player').hide()
   $('#profile').show()
   $('#game-board').hide()
   $('#change-pass').hide()
@@ -35,10 +39,12 @@ const playGameRedirect = function () {
   $('#credit').hide()
   $('#personal-statistics').hide()
   $('#show-games').html('')
+  $('#profile-error').html('')
 }
 
 // User is directed to the instructions.
 const instructionsRedirect = function () {
+  $('#two-player').hide()
   $('#instructions').show()
   $('#game-board').hide()
   $('#change-pass').hide()
@@ -46,10 +52,12 @@ const instructionsRedirect = function () {
   $('#credit').hide()
   $('#personal-statistics').hide()
   $('#show-games').html('')
+  $('#profile-error').html('')
 }
 
 // User is directed to the credit.
 const creditRedirect = function () {
+  $('#two-player').hide()
   $('#credit').show()
   $('#instructions').hide()
   $('#game-board').hide()
@@ -57,6 +65,7 @@ const creditRedirect = function () {
   $('#profile').hide()
   $('#personal-statistics').hide()
   $('#show-games').html('')
+  $('#profile-error').html('')
 }
 
 // To load stats on redirect to stats page.
@@ -95,6 +104,7 @@ const onIncompleteShow = function (event) {
 
 // User is directed to the stats page.
 const statsRedirect = function () {
+  $('#two-player').hide()
   $('#personal-statistics').show()
   $('#credit').hide()
   $('#instructions').hide()
@@ -102,6 +112,7 @@ const statsRedirect = function () {
   $('#change-pass').hide()
   $('#profile').hide()
   $('#show-games').html('')
+  $('#profile-error').html('')
   onStatsLoad()
 }
 
@@ -132,6 +143,41 @@ const beginAiGame = function () {
     .catch(ui.beginAiGameFailure)
 }
 
+// Form for users on the same device is shown.
+const sameDeviceForm = function () {
+  $('#second-player-same').show()
+  $('#second-player-form').show()
+}
+
+// User is directed to the two player section.
+const twoPlayerRedirect = function () {
+  $('#two-player').show()
+  $('#instructions').hide()
+  $('#game-board').hide()
+  $('#change-pass').hide()
+  $('#profile').hide()
+  $('#credit').hide()
+  $('#personal-statistics').hide()
+  $('#show-games').html('')
+  $('#profile-error').html('')
+}
+
+const secondPlayerSignIn = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  signInApi.signInUser(data)
+    .then(ui.secondPlayerSuccess)
+    .catch(ui.secondPlayerFailure)
+  $('#second-player-form').find('input[type=text], textarea').val('')
+  $('#second-player-form').find('input[type=password], textarea').val('')
+}
+
+const secondPlayerLocalBegin = function () {
+  gameApi.createGame()
+    .then(ui.secondPlayerLocalSuccess)
+    .catch(ui.secondPlayerLocalFailure)
+}
+
 // Add click events.
 const addProfileHandlers = function () {
   $('#sign-out-link').on('click', signOut)
@@ -144,6 +190,10 @@ const addProfileHandlers = function () {
   $('#stats-link').on('click', statsRedirect)
   $('#show-incomplete').on('submit', onIncompleteShow)
   $('#vs-ai-button').on('click', beginAiGame)
+  $('#vs-play-button').on('click', twoPlayerRedirect)
+  $('#same-device-button').on('click', sameDeviceForm)
+  $('#second-player-form').on('submit', secondPlayerSignIn)
+  $('#second-player-begin').on('click', secondPlayerLocalBegin)
 }
 
 module.exports = {

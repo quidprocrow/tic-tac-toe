@@ -30,7 +30,15 @@ $(() => {
   $('#credit').hide()
   $('#personal-statistics').hide()
   $('#ai-game-board').hide()
+  $('#second-player-same').hide()
+  $('#second-player-begin').hide()
+  $('#two-player').hide()
   $('.game-link').hide()
+  $('.non-game').hide()
+  $('.sign-link').hide()
+  $('#vs-play-button').hide()
+  $('#greeting-space').hide()
+  $('#sign-space').hide()
 })
 
 // use require with a reference to bundle the file and use it in this file

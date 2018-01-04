@@ -213,15 +213,15 @@ h2 {
   width: 604px;
 }
 
-.profile-bottom
+.player
 > .little-button {
-  clear: none;
   display: inline-block;
-  float: left;
-  margin: 0;
+  float: none;
+  margin: 0 auto 15px;
   padding: 0;
   width: 300px;
 }
+
 
 .vs {
   align-items: center;
@@ -229,7 +229,7 @@ h2 {
   float: left;
   height: 100%;
   justify-content: center;
-  min-height: 250px;
+  min-height: 150px;
   min-width: 250px;
   text-align: center;
   width: 50%;

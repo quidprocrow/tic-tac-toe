@@ -16,8 +16,14 @@ const signOutSuccess = function (data) {
   $('#instructions').hide()
   $('#credit').hide()
   $('#personal-statistics').hide()
-  $('#sign-out-error').remove()
+  $('#profile-error').remove()
   $('#show-games').html('')
+  $('.game-link').hide()
+  $('.non-game').hide()
+  $('.sign-link').hide()
+  $('#vs-play-button').hide()
+  $('#greeting-space').hide()
+  $('#sign-space').hide()
   store.user = null
   // console.log(store)
   $('#game-title').text('BYE BYE BYE').css('text-transform', 'uppercase')
@@ -32,7 +38,7 @@ const signOutFailure = function (data) {
     <p>Contact the
     <a href="mailto:windmillwarrior@gmail.com">administrator</a> otherwise.</p>
     `)
-  $('#profile').append(errorHtml).attr('id', 'sign-out-error').addClass('scooch')
+  $('#profile-error').html(errorHtml).addClass('scooch')
 }
 
 // Indicate success and invite user back to profile.
@@ -113,18 +119,17 @@ const beginGameFailure = function () {
     <p>Contact the
     <a href="mailto:windmillwarrior@gmail.com">administrator</a>.</p>
     `)
-  $('#profile').append(errorHtml)
+  $('#profile-error').html(errorHtml).addClass('scooch')
 }
 
 // Fails to begin a game.
 const beginAiGameFailure = function () {
-  const errorHtml = (`<p>
-    <b>Oops!</b> There's been an error!
+  const errorHtml = (`<p><b>Oops!</b> There's been an error!
     </p>
     <p>Contact the
     <a href="mailto:windmillwarrior@gmail.com">administrator</a>.</p>
     `)
-  $('#profile').append(errorHtml)
+  $('#profile-error').html(errorHtml).addClass('scooch')
 }
 
 // When the stats page is loaded, takes data from a GET request to populate
@@ -166,6 +171,52 @@ const statsLoadFailure = function (data) {
   $('#game-error').html(errorHtml)
 }
 
+const secondPlayerSuccess = function (data) {
+  store.secondUser = data.user
+  const userGreet = store.secondUser.email.split('@')
+  const helloHtml = (`<p>
+    Get ready, <B>${userGreet}.</p>
+    `)
+  $('#second-sign-in-notice').html(helloHtml).attr('class', 'sign-notice')
+  $('#second-player-form').hide()
+  $('#second-player-begin').show()
+}
+
+const secondPlayerFailure = function () {
+  const errorHtml = (`<p>
+    <b>Oops!</b> There's been an error!
+    </p>
+    <p>Did you perhaps type your password otherwise?</p>
+    <p>Contact the
+    <a href="mailto:windmillwarrior@gmail.com">administrator</a> otherwise.</p>
+    `)
+  $('#second-sign-in-notice').html(errorHtml).attr('class', 'sign-notice')
+}
+
+// Need to work on this when the API isn't down.
+//
+// const secondPlayerLocalSuccess = function (data) {
+//   store.secondUser = data.user
+//   const userGreet = store.secondUser.email.split('@')
+//   const helloHtml = (`<p>
+//     Get ready, <B>${userGreet}.</p>
+//     `)
+//   $('#second-sign-in-notice').html(helloHtml).attr('class', 'sign-notice')
+//   $('#second-player-form').hide()
+//   $('#second-player-begin').show()
+// }
+//
+// const secondPlayerLocalFailure = function () {
+//   const errorHtml = (`<p>
+//     <b>Oops!</b> There's been an error!
+//     </p>
+//     <p>Did you perhaps type your password otherwise?</p>
+//     <p>Contact the
+//     <a href="mailto:windmillwarrior@gmail.com">administrator</a> otherwise.</p>
+//     `)
+//   $('#second-sign-in-notice').html(errorHtml).attr('class', 'sign-notice')
+// }
+
 module.exports = {
   signOutFailure,
   signOutSuccess,
@@ -176,5 +227,7 @@ module.exports = {
   statsLoadSuccess,
   statsLoadFailure,
   beginAiGameFailure,
-  beginAiGameSuccess
+  beginAiGameSuccess,
+  secondPlayerSuccess,
+  secondPlayerFailure
 }

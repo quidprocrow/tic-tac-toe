@@ -20,6 +20,45 @@
         <button class="big-button" id="sign-in-button">SIGN IN</button>
         <button class="big-button" id="sign-up-button">SIGN UP</button>
       </section>
+<!-- NAVIGATION SECTION -->
+            <nav class="navbar navbar-toggleable-md navbar-light bg-faded" style="background: black;" id="navigation">
+              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <img src="https://image.ibb.co/eTYBjw/tic_tac_toe_icon.png" alt="Toggle me!">
+              </button>
+              <a class="navbar-brand" href="#" id="greeting-space">HI <span class="user-greeting"></span>!</a>
+              <a class="navbar-brand" href="#" id="sign-space">SIGN</a>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <a class="nav-link non-game sign-link" href="#" id="sign-in-link">IN</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link non-game sign-link" href="#" id="sign-up-link">UP</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link non-game" href="#" id="play-game-link">PLAY</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link non-game" href="#" id="instructions-link">INSTRUCTIONS</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link non-game" href="#" id="stats-link">STATS</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link non-game" href="#" id="change-password-link">CHANGE PASS</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link non-game" href="#" id="credit-link">CREDIT</a>
+                  </li>
+                  <li class="nav-item non-game">
+                    <a class="nav-link" href="#" id="sign-out-link">SIGN OUT</a>
+                  </li>
+                  <li class="nav-item game-link">
+                    <a class="nav-link" href="#" id="quit-game-link">QUIT GAME</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
 <!-- SIGN IN SECTION -->
       <section id="sign-in">
         <h1 class="shrink">SIGN IN</h1>
@@ -53,39 +92,6 @@
           </div>
         </form>
       </section>
-<!-- NAVIGATION SECTION -->
-      <nav class="navbar navbar-toggleable-md navbar-light bg-faded" style="background: black;" id="navigation">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <img src="https://image.ibb.co/eTYBjw/tic_tac_toe_icon.png" alt="Toggle me!">
-        </button>
-        <a class="navbar-brand" href="#">HI <span class="user-greeting"></span>!</a>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link non-game" href="#" id="play-game-link">PLAY</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link non-game" href="#" id="instructions-link">INSTRUCTIONS</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link non-game" href="#" id="stats-link">STATS</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link non-game" href="#" id="change-password-link">CHANGE PASS</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link non-game" href="#" id="credit-link">CREDIT</a>
-            </li>
-            <li class="nav-item non-game">
-              <a class="nav-link" href="#" id="sign-out-link">SIGN OUT</a>
-            </li>
-            <li class="nav-item game-link">
-              <a class="nav-link" href="#" id="quit-game-link">QUIT GAME</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
 <!-- PROFILE SECTION -->
       <section id="profile" class="profile">
         <div class="center">
@@ -97,6 +103,8 @@
               <button class="little-button" ID="vs-play-button">PLAYER</button>
               <button class="little-button" ID="vs-ai-button">AI</button>
             </div>
+        </div>
+        <div id="profile-error">
         </div>
       </section>
       <section id="change-pass" class="change-pass">
@@ -331,5 +339,31 @@
                   <button class="little-button" id="ai-reset-game-button">NEW GAME</button>
                 </div>
             </section>
+<!-- TWO PLAYER SECTION -->
+            <section id="two-player" class="profile">
+                <div class="center">
+                    <h1>PLAY ON</h1>
+                    </div>
+                    <div class="center player">
+                      <button class="little-button" ID="same-device-button">SAME DEVICE</button>
+                      <button class="little-button" ID="different-device-button">DIFFERENT DEVICES</button>
+                    </div>
+                    <div id="second-player-same" class="center">
+                      <h2>SECOND PLAYER</h2>
+                      <form id="second-player-form">
+                        <div class="center">
+                          <input type="text" name="credentials[email]" placeholder="EMAIL" class="input-field">
+                        </div>
+                        <div class="center">
+                        <input type="password" name= "credentials[password]" placeholder="PASSWORD" class="input-field">
+                        </div>
+                        <button class="little-button" id="second-player-sign-in-button">SIGN IN</button>
+                      </form>
+                      <div id="second-sign-in-notice">
+                      </div>
+                      <div id="second-player-begin" class="center player">
+                        <button class="little-button" id="second-player-begin-button">BEGIN GAME</button>
+                    </div>
+              </section>
     </body>
 </html>
