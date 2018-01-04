@@ -4,8 +4,21 @@ const store = require('../../store')
 const win = require('../win')
 const api = require('../api')
 
+// This function looks at the map, first, considering whether or not it has
+// the possibility of a win, then considering whether it is about to lose.
+// If neither possibility obtains, the AI then makes a decision based on a weighted
+// board: all taken places are marked as 0; all corners are 5; the center is 7;
+// and the remaining open places are 2. First it tries to grab the center,
+// then a corner, then anything left.
 const aiMove = function (boardArray) {
   let aiChoice = null
+  const biggerThanFive = (number) => {
+    if (number > 5) {
+      return true
+    } else {
+      return false
+    }
+  }
   const biggerThanThree = (number) => {
     if (number > 3) {
       return true
@@ -23,10 +36,10 @@ const aiMove = function (boardArray) {
   const mapMaker = function (aiArray) {
     for (let i = 0; i < aiArray.length; i++) {
       if (aiArray[i] === '') {
-        if (checkEven(i) && i !== 4) {
+        if (checkEven(i) && i !== 4 && i === 0) {
           aiArray[i] = 5
         } else if (i === 4) {
-          aiArray[i] = 4
+          aiArray[i] = 7
         } else {
           aiArray[i] = 2
         }
@@ -35,6 +48,7 @@ const aiMove = function (boardArray) {
       }
     }
   }
+  // Beginning of offensive / defensive check.
   const players = ['o', 'x']
   for (let j = 0; j < players.length; j++) {
     if (boardArray[0] === players[j] &&
@@ -169,12 +183,19 @@ const aiMove = function (boardArray) {
       return aiChoice
     }
   }
+  // Without offense or defense, makes a choice weighted with what is left.
   if (aiChoice === null) {
     const aiArray = boardArray.map(x => x)
     mapMaker(aiArray)
-    if (aiArray.some(biggerThanThree)) {
+    // Grab the center, if it can.
+    if (aiArray.some(biggerThanFive)) {
+      aiChoice = aiArray.findIndex(biggerThanFive)
+      return aiChoice
+      // Otherwise, grab a corner.
+    } else if (aiArray.some(biggerThanThree)) {
       aiChoice = aiArray.findIndex(biggerThanThree)
       return aiChoice
+      // Otherwise, grab SOMETHING.
     } else {
       const max = Math.max(aiArray)
       aiChoice = aiArray.findIndex(max)
@@ -183,11 +204,22 @@ const aiMove = function (boardArray) {
   }
 }
 
+// Make a choice using the aiChoice function, then update the API accordingly,
+// and make the board reflect that choice.
 const aiUpdate = function (boardArray) {
   const html = (`<p>O</p>`)
-  const aiChoice = aiMove(boardArray)
+  let aiChoice = aiMove(boardArray)
   store.aiChoice = aiChoice
-  const cellChoice = '#' + aiChoice + '2'
+  let cellChoice = ''
+  // This is a clunky solution to a strange problem: 0 is returned as 'undefined'
+  // in the aiChoice function, for reasons I don't understand, even if console
+  // logs correctly as '0' before being returned.
+  if (aiChoice !== undefined) {
+    cellChoice = '#' + aiChoice + '2'
+  } else if (aiChoice === undefined) {
+    cellChoice = '#02'
+    aiChoice = 0
+  }
   const arrayUpdate = {
     game: {
       cell: {
@@ -206,7 +238,6 @@ const aiUpdate = function (boardArray) {
 
 // Clear any errors from the page's display.
 const aiMsgClear = function () {
-  $('#user-msg').html('')
   $('#ai-user-msg').html('')
 }
 
@@ -265,14 +296,15 @@ const aiUpdateGameSuccess = function (data) {
     // If there are no blank cells, mark the game over.
     // Tell the user.
     const tieHtml = (`<p><B>Tie!</B></p>`)
-    $('#user-msg').html(tieHtml)
+    $('#ai-user-msg').html(tieHtml)
     aiMarkGameOver(move, index)
   }
 }
 
+// Shows user a message if the game failed to update.
 const aiUpdateGameFailure = function (data) {
   const invalidMoveHtml = (`<B>How bizzare.</B>`)
-  $('#user-msg').html(invalidMoveHtml)
+  $('#ai-user-msg').html(invalidMoveHtml)
 }
 
 const aiEndGameSuccess = function (data) {
