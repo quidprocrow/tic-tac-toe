@@ -55,13 +55,27 @@ The major files to attend to are the [`./index.html`](./index.html), and all fil
   1. **AI** - [`./assets/scripts/board/ai`](./assets/scripts/board/ai)
     Contains scripts that create variety of [events](./assets/scripts/board/events.js) specific to games against AI: attaches click events to the board as well as allowing to user to exit the board area by ending a game (whether or not it is yet over). Pending whether or not the click occurs on a space on the board marked as clear in the stored game, each click event initiates a request to the [api](./assets/scripts/board/api.js) to update the game remotely, [alerted](./assets/scripts/board/ui.js) on success or failure. Should that click have initiated a move that finishes the game, either through victory or by filling in all available spaces, the user is alerted and a reset game button apears. If that click does not lead to the end of the game, the **AI** is initiated, which makes a choice based on how the board looks and then makes an API request, checking for a win or a game ending just as with a user.
 
-# Development
+# Wireframes
 
 The wireframing for this project is contained within the [`./wireframes/`](./wireframes/) file. Development began with figuring out the game logic, wth the user features structured around the question of when to have access to the game.
 
+# User Stories
+
+* As a user, I want to be able to play a tic-tac-toe game.
+* As a user, I want to be able to quit that tic-tac-toe game at any point.
+* As a user, I want to know when the game is over.
+* As a user, I want to know who won.
+* As a user, I want to be able to start a new game after the old one ends.
+* As a user, I want to know my personal statistics.
+* As a user, I want to be able to change my password.
+* As a user, I want to be able to sign out.
+* As a user, I want failure to sign in to be visible.
+* As a user, I want failure to sign up to be visible.
+
+
 Since a game can only created by an authenticated user, the site is designed around barring access to creating a game unless a proper **sign-in** by a previously **signed-up** user occurs.
 
-Once that obtains, the user has access to a profile page with the option to **create a game against a guest** or **against an artificial intelligence**, with a navigation menu directing the user **view instructions**, **view statistics**, **change their password**, **view the credits**, or **sign out**.
+Once that obtains, the user has access to a profile page with the option to **create a game against a guest**, with a navigation menu directing the user **view instructions**, **view statistics**, **change their password**, **view the credits**, or **sign out**.
 
 **Creating a game** stores game information, and directs the user to a board that indicates whose turn it is and notifies when the game ends, with the results (tie or win by a particular player). When the game is over, it is marked as such.
 
@@ -72,16 +86,16 @@ Note that **quitting** does not mark the game as over.
 ## Future Work
 
 - [x] Create a game board for a user and a guest on the same device.
-- [x] Create an artificial intelligence.
+- [x] Create an artificial intelligence. *Now inactive.*
 - [ ] Allow multiple users to play on the same device.
 - [ ] Allow multiple users to play on remote devices.
 - [ ] Create TIC-PAC-TOE.
 
-My hope, entering into this project, was to create a functional tic-tac-toe game. The puzzle of what makes a winning game strategy -- and what makes a game fun -- pushed me to design an artificial intelligence to play against. **Brian Keegan** eventually convinced me that, even if a winning first-player strategy prioritizes grabbing corners over the center, a good second-player strategy heads straight to the center.
+My hope, entering into this project, was to create a functional tic-tac-toe game. The puzzle of what makes a winning game strategy -- and what makes a game fun -- pushed me to design an artificial intelligence to play against, now hidden on the deployed site but you may view the logic [`./assets/scripts/board/ai`](./assets/scripts/board/ai). **Brian Keegan** eventually convinced me that, even if a winning first-player strategy prioritizes grabbing corners over the center, a good second-player strategy heads straight to the center.
 
 Future additions should include multi-user games, as well as a modified version of the game: **TIC-PAC-TOE**, where each move has a random possibly of a previous move being eaten by Ms. Pac-Man.
 
- The drive for both of these extensions is the capabilities of the API and what makes an enjoyable game. There's something primal about competing against another person instead of an artificial strategist, which makes it that much more fun -- or perhaps it's that games are things meant to be shared. The API supports the ability for multiple user games. The API also allows for game boards to be updated even if they are not completed -- only the interface itself forbids input after a game is marked as over.
+ The drive for both of these extensions is the capabilities of the API and what makes an enjoyable game. There's something primal about competing against another person instead of an artificial strategist, which makes it that much more fun -- or perhaps it's that games are things meant to be shared. The API supports the ability for multiple user games.
 
 
 ## Known Issues
