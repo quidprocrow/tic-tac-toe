@@ -189,6 +189,7 @@ const addProfileHandlers = function () {
   $('#vs-guest-button').on('click', beginGame)
   $('#stats-link').on('click', statsRedirect)
   $('#show-incomplete').on('submit', onIncompleteShow)
+  $('#show-incomplete').hide()
   $('#vs-ai-button').on('click', beginAiGame)
   $('#vs-play-button').on('click', twoPlayerRedirect)
   $('#same-device-button').on('click', sameDeviceForm)
