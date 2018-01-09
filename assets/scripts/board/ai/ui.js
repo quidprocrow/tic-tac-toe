@@ -60,6 +60,7 @@ const aiMove = function (boardArray) {
           boardArray[2] === players[j] &&
         boardArray[0] === '') {
       aiChoice = 0
+      return aiChoice
     } else if (boardArray[0] === players[j] &&
           boardArray[2] === players[j] &&
         boardArray[1] === '') {
@@ -197,7 +198,11 @@ const aiMove = function (boardArray) {
       return aiChoice
       // Otherwise, grab SOMETHING.
     } else {
-      const max = Math.max(aiArray)
+      // Brian Keegan explained that Math.max cannot work on an array and showed
+      // me how to work through a function.
+      const max = aiArray.reduce((tot, cur) => {
+        return Math.max(tot, cur)
+      })
       aiChoice = aiArray.findIndex(max)
       return aiChoice
     }
