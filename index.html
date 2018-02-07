@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>TIC TAC TOE</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <!-- Google Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+<!-- INTRO SECTION -->
+      <section id="intro">
+        <h1 id="game-title">TIC TAC TOE</h1>
+        <button class="big-button" id="sign-in-button">SIGN IN</button>
+        <button class="big-button" id="sign-up-button">SIGN UP</button>
+      </section>
+<!-- NAVIGATION SECTION -->
+            <nav class="navbar navbar-toggleable-md navbar-light bg-faded" style="background: black;" id="navigation">
+              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <img src="https://image.ibb.co/eTYBjw/tic_tac_toe_icon.png" alt="Toggle me!">
+              </button>
+              <a class="navbar-brand" href="#" id="greeting-space">HI <span class="user-greeting"></span>!</a>
+              <a class="navbar-brand" href="#" id="sign-space">SIGN</a>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <a class="nav-link non-game sign-link" href="#" id="sign-in-link">IN</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link non-game sign-link" href="#" id="sign-up-link">UP</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link non-game" href="#" id="play-game-link">PLAY</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link non-game" href="#" id="instructions-link">INSTRUCTIONS</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link non-game" href="#" id="stats-link">STATS</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link non-game" href="#" id="change-password-link">CHANGE PASS</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link non-game" href="#" id="credit-link">CREDIT</a>
+                  </li>
+                  <li class="nav-item non-game">
+                    <a class="nav-link" href="#" id="sign-out-link">SIGN OUT</a>
+                  </li>
+                  <li class="nav-item game-link">
+                    <a class="nav-link" href="#" id="quit-game-link">QUIT GAME</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+<!-- SIGN IN SECTION -->
+      <section id="sign-in">
+        <h1 class="shrink">SIGN IN</h1>
+        <form id="sign-in-form">
+          <div class="center">
+            <input type="text" name="credentials[email]" placeholder="EMAIL" class="input-field">
+          </div>
+          <div class="center">
+          <input type="password" name= "credentials[password]" placeholder="PASSWORD" class="input-field">
+          </div>
+          <button class="little-button" id="sign-in-form-button">SIGN IN</button>
+        </form>
+        <div id="sign-in-error">
+        </div>
+      </section>
+<!-- SIGN UP SECTION -->
+      <section id="sign-up">
+        <form id="sign-up-form">
+          <h1 class="shrink">SIGN UP</h1>
+          <div class="center">
+            <input type="text" name="credentials[email]" placeholder="EMAIL" class="input-field">
+          </div>
+          <div class="center">
+          <input type="password" name= "credentials[password]" placeholder="PASSWORD" class="input-field">
+          </div>
+          <div class="center">
+          <input type="password" name= "credentials[password_confirmation]" placeholder="PASSWORD CONFIRMATION" class="input-field">
+          </div>
+          <button class="little-button" id="sign-up-form-button">SIGN UP</button>
+          <div id="sign-up-notification">
+          </div>
+        </form>
+      </section>
+<!-- PROFILE SECTION -->
+      <section id="profile" class="profile">
+        <div class="center">
+          <div class="vs">
+            <h2>PLAY VS.</h2>
+            </div>
+            <div class="vs-row">
+              <button class="little-button" ID="vs-guest-button">GUEST</button>
+              <button class="little-button" ID="vs-ai-button">AI</button>
+            </div>
+        </div>
+        <div id="profile-error">
+        </div>
+      </section>
+      <section id="change-pass" class="change-pass">
+        <h1 class="shrink">CHANGE PASS</h1>
+        <form id="change-password-form" class="change-pass-form">
+          <div class="center">
+          <input type="password" name= "passwords[old]" placeholder="OLD PASSWORD" class="input-field">
+          </div>
+          <div class="center">
+          <input type="password" name= "passwords[new]" placeholder="NEW PASSWORD" class="input-field">
+          </div>
+          <button class="little-button" id="change-password-form-button">CONFIRM CHANGE</button>
+        </form>
+        <div id="password-notification">
+        </div>
+      </section>
+        <section id="instructions">
+          <h1 class="shrink">INSTRUCTIONS</h1>
+          <div class="justify">
+            <p>
+            <B>Tic-Tac-Toe</b> is a two-player game. The first player selects one of the cells in a three-by-three grid to place an <b>&lsquo;X,&rsquo;</b> finishing their turn. Next, the second player places an <B>&lsquo;O&rsquo;</B> in their chosen cell on the same grid. The players take their turns, each trying to get a three of their symbols to align horizontally, vertically, or diagonally.
+            </p>
+            <p>
+            In this version, the player who initiates the game is always <B>X</B>. The second player &mdash; whether a guest on the same device, a second player logged in remotely, or one of the artificial intelligences included here &mdash; is accordingly <B>O</B>. All games against any opponent will be logged in your personal statistics.
+            </p>
+          </div>
+      </section>
+<!-- STATS SECTION -->
+      <section id="personal-statistics" class="personal-statistics">
+        <h1 class="shrink">STATISTICS</h1>
+        <div class="board-row">
+          <div class="stats-box">
+          <div class="stats-top">
+            TOTAL PLAYED
+          </div>
+          <div id="total-games" class="total">
+            0
+          </div>
+          </div>
+          <div class="stats-box">
+          <div class="stats-top">
+            TOTAL WON
+          </div>
+          <div id="total-games-won" class="total">
+            0
+          </div>
+          </div>
+        </div>
+        <div class="board-row">
+          <div class="stats-box">
+          <div class="stats-top">
+            TOTAL TIED
+          </div>
+          <div id="total-games-tied" class="total">
+            0
+          </div>
+          </div>
+          <div class="stats-box">
+          <div class="stats-top">
+            TOTAL INCOMPLETE
+          </div>
+          <div id="total-games-incomplete" class="total">
+            0
+          </div>
+          </div>
+        </div>
+        <div id="game-error" class="center">
+        </div>
+
+    </section>
+<!-- CREDIT SECTION -->
+      <section id="credit">
+        <h1 class ="shrink">CREDIT</h1>
+        <div class="quote">
+          <p>
+            <B>Creativity is usually a failure to cite.</b>
+          </p>
+          <p>
+            &mdash; <span class="uppercase"><i>someone</i></span>
+          </p>
+        </div>
+        <div class="justify">
+          <p>
+          This project is part of the <u>General Assembly Boston</u> curriculum, fulfilled here with some personal stylings by Sophia Derugen-Toomey. It was built in <a href="https://atom.io/">Atom</a> out of HTML, Sass, jQuery, and Javascript, coated in Google's <a href="https://fonts.google.com/specimen/Josefin+Sans">Josefin Sans</a> font, with a <a href="https://www.flaticon.com/free-icon/tic-tac-toe_103227">Freepik</a> icon for style and generous hosting by by <a href="https://pages.github.com/">Github Pages</a>.
+          </p>
+        </div>
+        <h1 class="shrink">SOPHIA</h1>
+        <div class="justify">
+          <p>
+          Sophia likes to play single-player games that let you have a pet and movies that are fast or furious (<a href="https://en.wikipedia.org/wiki/Logical_disjunction">inclusive &lsquo;or&rsquo;</a>). Please feel free to <a href="mailto:sophia.derugen-toomey@gmail.com">@</a> her.
+          </p>
+        </div>
+      </section>
+<!-- GAME SECTION -->
+      <section id="game-board" class="board">
+        <div class="board-row">
+          <div class="player1">
+            <div class="ex">
+              X
+            </div>
+            <div class="username">
+              <span class="user-greeting uppercase name"></span>
+            </div>
+            <div class="turn" id="odd">
+              TURN
+            </div>
+          </div>
+          <div class="player2">
+            <div class="oh">
+              O
+            </div>
+            <div class="username">
+              <span class="other-greeting uppercase name">GUEST</span>
+            </div>
+            <div class="turn" id="even">
+              TURN
+            </div>
+          </div>
+        </div>
+          <div class="board-row">
+            <div class="board-box" id="0" data-cell-index="0">
+
+            </div>
+            <div class="board-box" id="1" data-cell-index="1">
+
+            </div>
+            <div class="board-box" id="2" data-cell-index="2">
+
+            </div>
+          </div>
+          <div class="board-row">
+              <div class="board-box" id="3" data-cell-index="3">
+
+              </div>
+              <div class="board-box" id="4" data-cell-index="4">
+
+              </div>
+              <div class="board-box" id="5" data-cell-index="5">
+
+              </div>
+          </div>
+          <div class="board-row">
+              <div class="board-box" id="6" data-cell-index="6">
+
+              </div>
+              <div class="board-box" id="7" data-cell-index="7">
+
+              </div>
+              <div class="board-box" id="8" data-cell-index="8">
+
+              </div>
+          </div>
+          <div id="user-msg" class="message">
+          </div>
+          <div id="over-msg" class="message">
+          </div>
+          <div id="reset-game" class="board-row reset">
+            <button class="little-button" id="reset-game-button">NEW GAME</button>
+          </div>
+      </section>
+      <!-- AI GAME SECTION -->
+            <section id="ai-game-board" class="board">
+              <div class="board-row">
+                <div class="player1">
+                  <div class="ex">
+                    X
+                  </div>
+                  <div class="username">
+                    <span class="user-greeting uppercase name"></span>
+                  </div>
+                  <div class="turn" id="ai-odd">
+                    TURN
+                  </div>
+                </div>
+                <div class="player2">
+                  <div class="oh">
+                    O
+                  </div>
+                  <div class="username">
+                    <span class="other-greeting uppercase name">GUEST</span>
+                  </div>
+                  <div class="turn" id="ai-even">
+                    TURN
+                  </div>
+                </div>
+              </div>
+                <div class="board-row">
+                  <div class="board-box" id="02" data-cell-index="0">
+
+                  </div>
+                  <div class="board-box" id="12" data-cell-index="1">
+
+                  </div>
+                  <div class="board-box" id="22" data-cell-index="2">
+
+                  </div>
+                </div>
+                <div class="board-row">
+                    <div class="board-box" id="32" data-cell-index="3">
+
+                    </div>
+                    <div class="board-box" id="42" data-cell-index="4">
+
+                    </div>
+                    <div class="board-box" id="52" data-cell-index="5">
+
+                    </div>
+                </div>
+                <div class="board-row">
+                    <div class="board-box" id="62" data-cell-index="6">
+
+                    </div>
+                    <div class="board-box" id="72" data-cell-index="7">
+
+                    </div>
+                    <div class="board-box" id="82" data-cell-index="8">
+
+                    </div>
+                </div>
+                <div id="ai-user-msg" class="message">
+                </div>
+                <div id="ai-over-msg" class="message">
+                </div>
+                <div id="ai-reset-game" class="board-row reset">
+                  <button class="little-button" id="ai-reset-game-button">NEW GAME</button>
+                </div>
+            </section>
+<!-- TWO PLAYER SECTION -->
+            <section id="two-player" class="profile">
+                <div class="center">
+                    <h1>PLAY ON</h1>
+                    </div>
+                    <div class="center player">
+                      <button class="little-button" ID="same-device-button">SAME DEVICE</button>
+                      <button class="little-button" ID="different-device-button">DIFFERENT DEVICES</button>
+                    </div>
+                    <div id="second-player-same" class="center">
+                      <h2>SECOND PLAYER</h2>
+                      <form id="second-player-form">
+                        <div class="center">
+                          <input type="text" name="credentials[email]" placeholder="EMAIL" class="input-field">
+                        </div>
+                        <div class="center">
+                        <input type="password" name= "credentials[password]" placeholder="PASSWORD" class="input-field">
+                        </div>
+                        <button class="little-button" id="second-player-sign-in-button">SIGN IN</button>
+                      </form>
+                      <div id="second-sign-in-notice">
+                      </div>
+                      <div id="second-player-begin" class="center player">
+                        <button class="little-button" id="second-player-begin-button">BEGIN GAME</button>
+                    </div>
+              </section>
+    </body>
+</html>
