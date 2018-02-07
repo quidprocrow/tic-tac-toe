@@ -200,6 +200,8 @@ const aiMove = function (boardArray) {
     } else {
       // Brian Keegan explained that Math.max cannot work on an array and showed
       // me how to work through a function.
+
+      // CHECK FOR NUMBERS!!!!!
       const max = aiArray.reduce((tot, cur) => {
         return Math.max(tot, cur)
       })
