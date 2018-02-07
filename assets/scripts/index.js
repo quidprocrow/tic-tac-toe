@@ -39,7 +39,6 @@ $(() => {
   $('#vs-play-button').hide()
   $('#greeting-space').hide()
   $('#sign-space').hide()
-  $('#vs-ai-button').hide()
 })
 
 // use require with a reference to bundle the file and use it in this file
